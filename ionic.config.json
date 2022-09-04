@@ -1,0 +1,7 @@
+{
+  "name": "insuremenew",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
