@@ -1,17 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1>WELCOME TO</h1>
+  <h1>GENIEFIN FINANCEAL SELLER APP</h1>
+  <img style="width: 30px; height: 30px; float: right;" src="../../assets/imgs/lamp.png">
+  <ion-icon style="float: right; font-size: 30px;" name="call"></ion-icon>
+  <ion-fab vertical="center" horizontal="center" activated>
+    <ion-fab-button class="size-fab">
+      <ion-icon name="settings-outline" ></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      
+      <button class="size-fab"><ion-icon name="person-add"></ion-icon><div>
+        Add Member
+      </div></button>
+      <button class="size-fab"><ion-icon name="people-outline"></ion-icon>
+        <div>
+          Manage Members
+        </div></button>
+      
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      
+      <button class="size-fab"><ion-icon name="newspaper-outline"></ion-icon><div>
+        My Profile
+      </div> </button>
+      <button class="size-fab"><ion-icon name="speedometer-outline"></ion-icon><div>Dashboard</div></button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <button class="size-fab"><ion-icon name="card-outline"></ion-icon><div>Payout Grid</div></button>
+      <button class="size-fab"><ion-icon name="stats-chart-outline"></ion-icon><div>Sales Data</div></button>
+    </ion-fab-list>
+  </ion-fab>
 
-  
+<ion-fab vertical="bottom" horizontal="center">
+  <ion-fab-button ><ion-icon name="add"></ion-icon></ion-fab-button>
+</ion-fab>
+
 </ion-content>
