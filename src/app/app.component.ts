@@ -28,15 +28,15 @@ export class AppComponent {
     public aDb:AngularFireDatabase
     ) {
       // this.fbasedb = firebase;
-    try {
-      if(localStorage.firstTimeLogin == "true"){
-this.router.navigate(['home']);
-      }else{
-        this.router.navigate(['intro']);
-      }
-    } catch (error) {
-      this.router.navigate(['intro']);
-    }
+//     try {
+//       if(localStorage.firstTimeLogin == "true"){
+// this.router.navigate(['home']);
+//       }else{
+//         this.router.navigate(['intro']);
+//       }
+//     } catch (error) {
+//       this.router.navigate(['intro']);
+//     }
     
   }
   ngAfterViewInit() {

@@ -14,6 +14,6 @@ export class IntroPage implements OnInit {
   }
   goto(){
     localStorage.firstTimeLogin = "true";
-this.router.navigate(['home']);
+this.router.navigate(['login']);
   }
 }
