@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button></ion-back-button>
+    <ion-title>Sales Data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Member Dashboard</h2>
+  <ion-item>
+    <ion-label position="floating">Select Member</ion-label>
+    <ion-select placeholder="Select member">
+      <ion-select-option value="all">All Members</ion-select-option>
+      <ion-select-option value="m1">M1</ion-select-option>
+      <ion-select-option value="m2">M2</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Select Date</ion-label>
+    <ion-select placeholder="Select date">
+      <ion-select-option value="all">All Members</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Lead Number</ion-label>
+          <ion-input></ion-input>
+        </ion-item>  
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Customer Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>  
+      </ion-col>
+    </ion-row>
+    <div class="btnStyle">
+      <ion-button class="btnStyleIn">Search</ion-button>
+    </div>
+  </ion-grid>
+  <div class="btnStyle">
+    <ion-button>Export to Exel</ion-button>
+  </div>
+</ion-content>

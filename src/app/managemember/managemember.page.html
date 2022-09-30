@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Member</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="buttonCont">This change need to done every month</h3>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Select Member</ion-label>
+    <ion-select placeholder="Select member">
+      <ion-select-option value="all">All Members</ion-select-option>
+      <ion-select-option value="m1">M1</ion-select-option>
+      <ion-select-option value="m2">M2</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Select Date</ion-label>
+    <ion-select placeholder="Select date">
+      <ion-select-option value="all">All Members</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Select Bank</ion-label>
+    <ion-select placeholder="Select bank">
+      <ion-select-option value="all">All Banks</ion-select-option>
+      <ion-select-option value="b1">B1</ion-select-option>
+      <ion-select-option value="b2">B2</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Set % for me</ion-label>
+    <ion-input></ion-input>
+  </ion-item>  
+  <br>
+  <div class="btnStyle">
+    <ion-button class="btnStyleIn">Set</ion-button>
+  </div>
+<br>
+<ion-item>
+  <ion-label position="floating">Enter Member Name</ion-label>
+  <ion-input></ion-input>
+</ion-item>  
+<div class="btnStyle">
+<ion-button class="btnStyleIn">Search</ion-button>
+</div>
+
+<h3>Members List</h3>
+<div>
+  <ion-grid class="ion-margin">
+  <ion-row>
+<ion-col size="2">Sr. No</ion-col>
+<ion-col size="3">Name</ion-col>
+<ion-col size="4">Mobile</ion-col>
+<ion-col size="3">View Business</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="2">1</ion-col>
+    <ion-col size="3">Suresh</ion-col>
+    <ion-col size="4">7878757472</ion-col>
+    <ion-col size="3"><ion-button class="btnStyleIn">View</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+
+<br>
+<h2>Member Dashboard</h2>
+<ion-item>
+  <ion-label position="floating">Select Member</ion-label>
+  <ion-select placeholder="Select member">
+    <ion-select-option value="all">All Members</ion-select-option>
+    <ion-select-option value="m1">M1</ion-select-option>
+    <ion-select-option value="m2">M2</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Select Date</ion-label>
+  <ion-select placeholder="Select date">
+    <ion-select-option value="all">All Members</ion-select-option>
+  </ion-select>
+</ion-item>
+<br>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+        <ion-label>Total Points Redeem</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+    <ion-col>
+        <ion-label>Total Points Pending</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+    <ion-col>
+        <ion-label>Total Number of Sales</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+    <ion-col>
+        <ion-label>Total Number of Rejected Sales</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
