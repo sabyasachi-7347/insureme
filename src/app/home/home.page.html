@@ -1,8 +1,8 @@
 <ion-content [fullscreen]="true">
   <h1>WELCOME TO</h1>
   <h1>GENIEFIN FINANCEAL SELLER APP</h1>
-  <img style="width: 30px; height: 30px; float: right; margin-right: 7%;" src="../../assets/imgs/lamp.png">
-  <ion-icon style="float: right; font-size: 30px;" name="call"></ion-icon>
+  <img style="width: 30px; height: 30px; float: right; margin-right: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
+  <ion-icon style="float: right; font-size: 30px;" (click)="openContactModal()" name="call"></ion-icon>
   <!-- <ion-fab vertical="center" horizontal="center" activated>
     <ion-fab-button class="size-fab">
       <ion-icon name="settings-outline" ></ion-icon>
@@ -66,14 +66,14 @@
       <ion-col></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col (click)="goto('addmember')">
         <ion-card>
           <ion-icon class="iconsty" name="person-add"></ion-icon><div>
             Add Member
           </div>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col (click)="goto('managemember')">
         <ion-card>
           <ion-icon class="iconsty" name="people-outline"></ion-icon>
         <div>
@@ -84,14 +84,14 @@
     </ion-row>
   
     <ion-row>
-      <ion-col>
+      <ion-col (click)="goto('userprofile')">
         <ion-card>
           <ion-icon class="iconsty" name="newspaper-outline"></ion-icon><div>
             My Profile
           </div>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col (click)="goto('dashboard')">
         <ion-card>
           <ion-icon class="iconsty" name="speedometer-outline"></ion-icon><div>Dashboard</div>
         </ion-card>
@@ -99,12 +99,12 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col (click)="goto('payoutgrid')">
         <ion-card>
           <ion-icon class="iconsty" name="card-outline"></ion-icon><div>Payout Grid</div>
         </ion-card>
       </ion-col>
-      <ion-col>
+      <ion-col (click)="goto('salesdata')">
         <ion-card>
           <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Sales Data</div>
         </ion-card>
@@ -114,7 +114,7 @@
   </ion-grid>
 </div>
 
-<ion-fab vertical="bottom" horizontal="center" (click)="goto('addmember')">
+<ion-fab vertical="bottom" horizontal="center" (click)="goto('addbusiness')">
   <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
 </ion-fab>
 

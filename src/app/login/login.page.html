@@ -1,19 +1,32 @@
 <ion-content>
   <img src="../../assets/imgs/loginscreen.PNG" height="50%">
   <h3 class="buttonCont">Login</h3>
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+  
   <ion-item>
-    <ion-label position="floating">Email ID</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating"  form>Email ID</ion-label>
+    <ion-input formControlName="email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Password</ion-label>
-    <ion-input></ion-input>
+    <ion-input type="{{passwordShowType}}" formControlName="password"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="passwordShow" formControlName="passwordShow" (ionChange)="showPassword()" slot="start"></ion-checkbox>
+  <ion-label>Show Password</ion-label>
+  </ion-item> 
   <div class="buttonCont">
-    <ion-button class="loginButton">Sign In</ion-button>
+    <!-- goto('loginwithpin') -->
+    <ion-button class="loginButton" (click)="login()">Sign In</ion-button>
   </div>
   <br>
   <div class="buttonCont">
     <a (click)="goto('register')">Don't have an account ? Sign Up</a>
   </div>
+  <br>
+  <div class="buttonCont">
+    <a (click)="goto('forgotpassword')">Forgot Password ?</a>
+  </div>
+</form>
+
 </ion-content>

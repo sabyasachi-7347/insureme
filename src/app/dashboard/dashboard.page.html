@@ -3,15 +3,48 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Sales Data</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid style="margin: 15%;">
+    <ion-row style="text-align: center;">
+      <ion-col>
+          <ion-label>Total Points Redeem</ion-label>
+          <ion-input></ion-input>  
+      </ion-col>
+      <ion-col>
+          <ion-label>Total Points Pending</ion-label>
+          <ion-input></ion-input>  
+      </ion-col>
+      </ion-row>
+      <ion-row style="text-align: center;">
+      <ion-col>
+          <ion-label>Total Paid Points</ion-label>
+          <ion-input></ion-input>  
+      </ion-col>
+      <ion-col>
+        <ion-label>Total Number of Cases</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <ion-label>Total Invalid Cases</ion-label>
+        <ion-input></ion-input>  
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-searchbar placeholder="Enter LAN Number"></ion-searchbar>
+  </ion-item>
+
   <h2>Member Dashboard</h2>
   <ion-item>
     <ion-label position="floating">Select Member</ion-label>
-    <ion-select placeholder="Select member">
+    <ion-select placeholder="Select member" interface="action-sheet">
       <ion-select-option value="all">All Members</ion-select-option>
       <ion-select-option value="m1">M1</ion-select-option>
       <ion-select-option value="m2">M2</ion-select-option>
@@ -28,7 +61,7 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label>LAN ID Number</ion-label>
+          <ion-label>Lead Number</ion-label>
           <ion-input></ion-input>
         </ion-item>  
       </ion-col>

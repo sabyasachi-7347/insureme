@@ -51,7 +51,7 @@ export class AppComponent {
       }
      
     })
-    this.callFirebaseTest();
+    // this.callFirebaseTest();
 // this.callFirebaseDbTest();
 
   }

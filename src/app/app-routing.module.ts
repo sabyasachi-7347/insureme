@@ -39,6 +39,34 @@ const routes: Routes = [
     path: 'salesdata',
     loadChildren: () => import('./salesdata/salesdata.module').then( m => m.SalesdataPageModule)
   },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
+  {
+    path: 'loginwithpin',
+    loadChildren: () => import('./loginwithpin/loginwithpin.module').then( m => m.LoginwithpinPageModule)
+  },
+  {
+    path: 'addbusiness',
+    loadChildren: () => import('./addbusiness/addbusiness.module').then( m => m.AddbusinessPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'payoutgrid',
+    loadChildren: () => import('./payoutgrid/payoutgrid.module').then( m => m.PayoutgridPageModule)
+  },
+  {
+    path: 'lampoffers',
+    loadChildren: () => import('./lampoffers/lampoffers.module').then( m => m.LampoffersPageModule)
+  },
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+  },
 ];
 
 @NgModule({
