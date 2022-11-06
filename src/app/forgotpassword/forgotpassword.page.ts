@@ -37,7 +37,11 @@ export class ForgotpasswordPage implements OnInit {
  async sendLink(){
   console.log(this.forgotPasswordForm.value);
   console.log(this.forgotPasswordForm.value.email);
-  this.auth.sendPasswordResetEmail(this.forgotPasswordForm.value.email)
+  if(this.forgotPasswordForm.value.email.trim() == ''){
+    alert("Please enter email address");
+    return;
+  }
+  this.auth.sendPasswordResetEmail(this.forgotPasswordForm.value.email.trim())
   .then(async (result)=>{
     console.log(result);
 this.toast = await this.toastCtrl.create({ message: "A link will be sent to your email id "+this.forgotPasswordForm.value.email+" , Please check your spam mails.",

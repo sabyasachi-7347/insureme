@@ -9,6 +9,7 @@ import {
 } from '@angular/fire/compat/auth';
 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginPage implements OnInit {
   constructor(public router:Router,
    public auth:AngularFireAuth,
    public firestore:AngularFirestore,
-   public formBuilder: FormBuilder
+   public formBuilder: FormBuilder,
+   public toastController:ToastController
     ) {
       
      }
@@ -35,6 +37,15 @@ export class LoginPage implements OnInit {
        });
 
   ngOnInit() {
+    try{
+      if(localStorage.pin){
+        this.goto('loginwithpin');
+      }else{
+        
+      }
+    }catch(e){
+      
+    }
   }
 
   get errorControl() {
@@ -43,17 +54,29 @@ export class LoginPage implements OnInit {
 
 async login(){
   console.log(this.loginForm.value);
-  
-    this.auth.signInWithEmailAndPassword(this.loginForm.value.email.trim(),this.loginForm.value.password).then((data)=>{
+  if(this.loginForm.value.email.trim() == '' || this.loginForm.value.password.trim() == ''){
+    alert("Please enter email and password");
+    return;
+  }
+    this.auth.signInWithEmailAndPassword(this.loginForm.value.email.trim(),this.loginForm.value.password).then(async (data)=>{
 console.log(data);
+var toast = await this.toastController.create({
+  message: "Logged in with "+this.loginForm.value.email.trim(),
+  duration: 5000,
+  position: 'top',
+})
+
+toast.present();
 if(data.user.uid)
 {
-  const docref:any =  this.firestore.collection("users").doc("testuser@gmail.com");
+  const docref:any =  this.firestore.collection("users").doc(this.loginForm.value.email.trim());
  this.colldata = docref.get().subscribe((doc)=>{
     console.log(doc.data());
     return doc.data()
     
   })
+  localStorage.userData = JSON.stringify(this.colldata);
+  localStorage.uuid = JSON.stringify(data.user.uid); 
   this.goto('loginwithpin')
 
 }  

@@ -2,42 +2,83 @@
   <img src="../../assets/imgs/loginscreen.PNG" height="50%">
   <h3 class="buttonCont">Register</h3>
   <h5 class="buttonCont">Let's help with some details.</h5>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()" novalidate>
   <ion-item>
-    <ion-label position="floating">Enter Your Full Name</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Enter Your Full Name <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="name"></ion-input>
   </ion-item>
+  <div *ngFor="let error of errorMessages.name">
+    <ng-container *ngIf="name.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>
   <ion-item>
-    <ion-label position="floating">Email ID</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Email ID <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="email"></ion-input>
   </ion-item>
+  <div *ngFor="let error of errorMessages.email">
+    <ng-container *ngIf="email.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>
   <ion-item>
-    <ion-label position="floating">Mobile Number </ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="mobile" type="number"></ion-input>
   </ion-item>
+  <div *ngFor="let error of errorMessages.mobile">
+    <ng-container *ngIf="mobile.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>
   <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input></ion-input>
-  </ion-item>  
+    <ion-label position="floating">Aadhaar Number <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input formControlName="aadhaarno" type="number"></ion-input>
+  </ion-item>
+  <div *ngFor="let error of errorMessages.aadhaarno">
+    <ng-container *ngIf="aadhaarno.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>
   <ion-item>
-    <ion-label position="floating">Confirm Password</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="{{passwordShowType}}" formControlName="password"></ion-input>
+  </ion-item>
+  <div *ngFor="let error of errorMessages.password">
+    <ng-container *ngIf="password.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>  
+  <ion-item>
+    <ion-label position="floating">Confirm Password <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="{{passwordShowType}}" formControlName="cpassword"></ion-input>
+  </ion-item>
+  <div *ngFor="let error of errorMessages.cpassword">
+    <ng-container *ngIf="cpassword.hasError(error.type)"> 
+         <small class="serror-message">{{error.message}}</small>
+       </ng-container> 
+     </div>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="passwordShow" formControlName="passwordShow" (ionChange)="showPassword()" slot="start"></ion-checkbox>
+  <ion-label>Show Password</ion-label>
   </ion-item>
 <ion-row>
-  <ion-col size="6" class="loginButton">
-    <img src="../../assets/imgs/logo.png">
-    <p>Adhar Front</p>
+  <ion-col size="6" class="loginButton" (click)="imageOptionPopup('Aadhaar Front')">
+    <img [src]="aadharFrontImg == ''?'../../assets/imgs/logo.png':aadharFrontImg">
+    <p>Adhar Front <ion-text color="danger">*</ion-text></p>
   </ion-col>
-  <ion-col size="6" class="loginButton">
-    <img src="../../assets/imgs/logo.png">
-    <p>Adhar Back</p>
+  <ion-col size="6" class="loginButton" (click)="imageOptionPopup('Aadhaar Back')">
+    <img [src]="aadharBackImg == ''?'../../assets/imgs/logo.png':aadharBackImg">
+    <p>Adhar Back <ion-text color="danger">*</ion-text></p>
   </ion-col>
 </ion-row>
-
   <div class="buttonCont">
-    <ion-button class="loginButton">Sign Up</ion-button>
-  </div>
+    <ion-button class="loginButton" (click)="signup()" [disabled]="!registerForm.valid">Sign Up</ion-button>
+  </div>   
   <br>
   <div class="buttonCont">
     <a (click)="goto('login')">Already have an account ? Sign In</a>
   </div>
+  <br>
+</form>
 </ion-content>
+ 

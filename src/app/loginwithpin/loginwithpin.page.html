@@ -6,21 +6,30 @@
   <h3 class="buttonCont" *ngIf="setPin=='2'">Enter PIN</h3>
   <ion-row text-center>
     <ion-col style="text-align: center;">
-     <ion-input #otp1 required maxLength="1" type="number" (keyup)="otpController($event,otp2,'')">
+     <ion-input #otp1 required maxLength="1" [(ngModel)]="d1" type="number" (keyup)="otpController($event,otp2,'')">
      </ion-input>
-     <ion-input #otp2 required maxLength="1" type="number" (keyup)="otpController($event,otp3,otp1)">
+     <ion-input #otp2 required maxLength="1" [(ngModel)]="d2" type="number" (keyup)="otpController($event,otp3,otp1)">
      </ion-input>
-     <ion-input #otp3 required maxLength="1" type="number" (keyup)="otpController($event,otp4,otp2)">
+     <ion-input #otp3 required maxLength="1" [(ngModel)]="d3" type="number" (keyup)="otpController($event,otp4,otp2)">
      </ion-input>
-     <ion-input #otp4 required maxLength="1" type="number" (keyup)="otpController($event,'',otp3)">
+     <ion-input #otp4 required maxLength="1" [(ngModel)]="d4" type="number" (keyup)="otpController($event,'',otp3)">
      </ion-input>
     </ion-col>
   </ion-row>
-  <div class="buttonCont">
-    <ion-button class="loginButton" (click)="goto('home')">Sign In</ion-button>
+  <div class="buttonCont" *ngIf="setPin == '2'">
+    <ion-button class="loginButton" (click)="signin()">Sign In</ion-button>
+  </div>
+  <div class="buttonCont" *ngIf="setPin == '0'">
+    <ion-button class="loginButton" (click)="setpin()">Set PIN</ion-button>
+  </div>
+  <div class="buttonCont" *ngIf="setPin == '1'">
+    <ion-button class="loginButton" (click)="confirmPin()">Confirm PIN</ion-button>
   </div>
   <br>
   <div class="buttonCont">
-    <a (click)="goto('login')">Forgot PIN ?</a>
+    <a (click)="goto('login')" *ngIf="setPin == '2'">Forgot PIN ?</a>
+  </div>
+  <div class="buttonCont" *ngIf="setPin != '2'">
+    <a (click)="goto('login')">Back to Login</a>
   </div>
 </ion-content>

@@ -4,3 +4,29 @@
 .buttonCont{
     text-align: center;
 }
+.rrr {
+    height: 13%;
+    margin-top: 168%;
+}
+
+.form-bg ion-label{color: #a39f9f}
+.form-bg ion-input{color: #424242}
+.form-bg ion-item{margin-bottom:10px;}
+
+.item-inner {
+    flex-direction: row-reverse !important;
+  }
+
+  .icon-uplod{
+    color: #5c46f2 !important;
+    margin: 17px -13px -33px 0 !important;
+    background-color: transparent;
+    font-size: 27px;
+    padding: 0px 0px 12px 0px;
+  }
+
+
+.uplod-file-name{
+  color: #5c46f2  !important;  
+}
+.serror-message{color: #f20e0e;}
