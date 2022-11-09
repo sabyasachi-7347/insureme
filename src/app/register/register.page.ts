@@ -169,12 +169,13 @@ await actionSheet.present();
         {
           await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
 "name":this.registerForm.value.name.trim(),
-"mail":this.registerForm.value.email.trim(),
+"email":this.registerForm.value.email.trim(),
 "mobile":this.registerForm.value.mobile.toString().trim(),
 "aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
 "aadhaarFront":this.aadharFrontImg,
 "aadhaarBack":this.aadharBackImg,
-"role":'user'
+"enrolledby":'admin',
+"role":'agent'
          }).catch((error) => {
           console.log(error);
           alert("Unable to process request");

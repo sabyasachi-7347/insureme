@@ -12,23 +12,23 @@
 
   <ion-item>
     <ion-label position="floating">Enter Your Full Name</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="name" requred (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Email ID</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="email" (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Mobile Number </ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="mobile" (ionChange)="showBtn()"></ion-input>
   </ion-item>
-  <ion-item *ngIf="false">
+  <!-- <ion-item *ngIf="false">
     <ion-label position="floating">Aadhar Number</ion-label>
     <ion-input></ion-input>
-  </ion-item>  
+  </ion-item>   -->
  
   <div class="buttonCont">
-    <ion-button class="loginButton">Add Member</ion-button>
+    <ion-button class="loginButton" [disabled]="addbtn" (click)="addMember()">Add Member</ion-button>
   </div>
 </ion-content>
 

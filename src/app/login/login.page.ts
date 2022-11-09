@@ -72,10 +72,11 @@ if(data.user.uid)
   const docref:any =  this.firestore.collection("users").doc(this.loginForm.value.email.trim());
  this.colldata = docref.get().subscribe((doc)=>{
     console.log(doc.data());
+    localStorage.userData = JSON.stringify(doc.data());
     return doc.data()
     
   })
-  localStorage.userData = JSON.stringify(this.colldata);
+  
   localStorage.uuid = JSON.stringify(data.user.uid); 
   this.goto('loginwithpin')
 

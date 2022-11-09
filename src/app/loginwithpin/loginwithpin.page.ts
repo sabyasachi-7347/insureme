@@ -33,7 +33,7 @@ export class LoginwithpinPage implements OnInit {
     this.router.navigate([page]);
   }
 
-  otpController(event,next,prev){
+  otpController(event,next,prev,curr){
     if(event.target.value.length < 1 && prev){
       prev.setFocus()
     }
@@ -41,6 +41,7 @@ export class LoginwithpinPage implements OnInit {
       next.setFocus();
     }
     else {
+      curr.blur();
      return 0;
     } 
 
