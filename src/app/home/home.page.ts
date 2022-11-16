@@ -23,4 +23,8 @@ async  openContactModal(){
     });
     contactModal.present();
     }
+
+    logout(){
+      this.router.navigate(['loginwithpin']);
+    }
 }

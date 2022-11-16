@@ -11,15 +11,15 @@
   <img src="../../assets/imgs/addmembers.png" height="35%">
 
   <ion-item>
-    <ion-label position="floating">Enter Your Full Name</ion-label>
+    <ion-label position="floating">Enter Your Full Name <ion-text color="danger">*</ion-text></ion-label>
     <ion-input [(ngModel)]="name" requred (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Email ID</ion-label>
+    <ion-label position="floating">Email ID <ion-text color="danger">*</ion-text></ion-label>
     <ion-input [(ngModel)]="email" (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Mobile Number </ion-label>
+    <ion-label position="floating">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
     <ion-input [(ngModel)]="mobile" (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <!-- <ion-item *ngIf="false">

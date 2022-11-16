@@ -85,6 +85,10 @@ export class LoginwithpinPage implements OnInit {
     this.enteredPin = this.d1+''+this.d2+''+this.d3+''+this.d4;
     console.log(this.enteredPin);
     if(this.enteredPin == JSON.parse(localStorage.pin)){
+      this.d1="";
+      this.d2="";
+      this.d3="";
+      this.d4="";
       this.goto('home');
     }else{
       alert("Wrong PIN entered, Please try again");

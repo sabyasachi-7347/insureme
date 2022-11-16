@@ -8,43 +8,52 @@
 </ion-header>
 
 <ion-content>
-  <img src="../../assets/imgs/loginscreen.PNG">
-  <h3 class="buttonCont">Welcome Rajesh</h3>
+  <!-- <img class="imgSty" src="../../assets/imgs/loginscreen.PNG"> -->
+  <div class="imgCont">
+    <img class="imgSty" [src]="userProfileOpj.profilePicture == ''?'../../assets/imgs/logo.png':userProfileOpj.profilePicture">
+    <ion-icon name="camera" (click)="openCamera()"></ion-icon>
+  </div>
+  
+  <h3 class="buttonCont">Welcome {{user}}</h3>
   <br>
-  <h5 class="buttonCont">Personal Details</h5>
+  <h5 class="buttonCont">Personal Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon></h5>
   <ion-item>
     <ion-label position="floating">Full Name</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.name"  [readonly]="personalDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Email ID</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.email" [readonly]="personalDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Mobile Number </ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.mobile" type="number" [readonly]="personalDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Gender</ion-label>
-    <ion-input></ion-input>
+    <ion-select [(ngModel)]="userProfileOpj.gender" interface="action-sheet" [disabled]="personalDataRead">
+      <ion-select-option value="male">Male</ion-select-option>
+      <ion-select-option value="female">Female</ion-select-option>
+      <ion-select-option value="other">Other</ion-select-option>
+    </ion-select>
   </ion-item>  
   <br>
-  <h5 class="buttonCont">Payout Details</h5>
+  <h5 class="buttonCont">Payout Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon></h5>
   <ion-item>
     <ion-label position="floating">Beneficiary Name</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.beneficiary" [readonly]="bankDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Account Number</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.acno" type="number" [readonly]="bankDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">IFSC Code</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.ifsc" [readonly]="bankDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">PAN Number</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="userProfileOpj.panno" [readonly]="bankDataRead"></ion-input>
   </ion-item>
 
 </ion-content>
