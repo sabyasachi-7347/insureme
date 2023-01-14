@@ -163,10 +163,10 @@ await actionSheet.present();
       alert("Please attach aadhaar card picture");
       return;
     }else{
-      this.auth.createUserWithEmailAndPassword(this.registerForm.value.email.trim(),this.registerForm.value.password).then(async (data)=>{
-        console.log(data);
-        if(data.user.uid)
-        {
+      // this.auth.createUserWithEmailAndPassword(this.registerForm.value.email.trim(),this.registerForm.value.password).then(async (data)=>{
+      //   console.log(data);
+      //   if(data.user.uid)
+      //   {
           await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
 "name":this.registerForm.value.name.trim(),
 "email":this.registerForm.value.email.trim(),
@@ -175,6 +175,7 @@ await actionSheet.present();
 "aadhaarFront":this.aadharFrontImg,
 "aadhaarBack":this.aadharBackImg,
 "enrolledby":'admin',
+"approvedbyadmin":'false',
 "role":'agent'
          }).catch((error) => {
           console.log(error);
@@ -189,16 +190,17 @@ await actionSheet.present();
           //  this.goto('login');
           return;
          })
-        }}).catch((err) => {
-          console.log(err);
-          console.log(JSON.parse(JSON.stringify(err)));
+        // }}
+        // ).catch((err) => {
+        //   console.log(err);
+        //   console.log(JSON.parse(JSON.stringify(err)));
           
-          var errMsg:any = JSON.parse(JSON.stringify(err))
-          errMsg = errMsg.code;
-          if(errMsg == 'auth/email-already-in-use'){
-            alert("The email address is already in use by another account.")
-          }
-        })
+        //   var errMsg:any = JSON.parse(JSON.stringify(err))
+        //   errMsg = errMsg.code;
+        //   if(errMsg == 'auth/email-already-in-use'){
+        //     alert("The email address is already in use by another account.")
+        //   }
+        // })
     }
   }
 

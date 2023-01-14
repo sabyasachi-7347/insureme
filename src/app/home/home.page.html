@@ -1,9 +1,33 @@
+<ion-header>
+  <ion-toolbar class="header-color"> 
+    <!-- <ion-row>
+      <ion-col>
+        <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
+      </ion-col>
+      <ion-col> -->
+        <ion-title style="text-align: center;">
+          <p>WELCOME TO</p>
+          <p>GENIEFIN FINANCEAL SELLER APP</p>
+        </ion-title>
+      <!-- </ion-col>
+      <ion-col>
+        <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
+        <ion-icon style="float: right; font-size: 30px; " (click)="openContactModal()" name="call"></ion-icon>
+      </ion-col>
+    </ion-row> -->
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
+  <div>
+  <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
+  <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
+  <ion-icon style="float: right; font-size: 30px; " (click)="openContactModal()" name="call"></ion-icon>
+</div>
+<!-- <div style="margin-top: 12%;">
   <h1>WELCOME TO</h1>
   <h1>GENIEFIN FINANCEAL SELLER APP</h1>
-  <img style="width: 30px; height: 30px; float: right; margin-right: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
-  <ion-icon style="float: right; font-size: 30px;" (click)="openContactModal()" name="call"></ion-icon>
-  <ion-icon style="float: right; font-size: 30px;" (click)="logout()" name="power-outline"></ion-icon>
+</div> -->
   <!-- <ion-fab vertical="center" horizontal="center" activated>
     <ion-fab-button class="size-fab">
       <ion-icon name="settings-outline" ></ion-icon>
@@ -60,22 +84,40 @@
       <button class="size-fab"><ion-icon name="stats-chart-outline"></ion-icon><div>Sales Data</div></button>
     </ion-fab-list>
   </ion-fab> -->
-<br>
-<div>
+
+ 
+
+<div style="margin-top: 10%;">
+  <!-- <ion-item>
+    <ion-label>Pick date</ion-label>
+    <ion-input
+      value="{{ date | date: 'dd/MM/yyyy' }}"
+      id="date"
+      class="ion-text-end"
+    ></ion-input>
+    <ion-popover trigger="date" size="cover">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          [(ngModel)]="date"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item> -->
   <ion-grid>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col></ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
-      <ion-col (click)="goto('addmember')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('addmember')">
           <ion-icon class="iconsty" name="person-add"></ion-icon><div>
             Add Member
           </div>
         </ion-card>
       </ion-col>
-      <ion-col (click)="goto('managemember')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('managemember')">
           <ion-icon class="iconsty" name="people-outline"></ion-icon>
         <div>
           Manage Members
@@ -85,29 +127,37 @@
     </ion-row>
   
     <ion-row>
-      <ion-col (click)="goto('userprofile')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('userprofile')">
           <ion-icon class="iconsty" name="newspaper-outline"></ion-icon><div>
             My Profile
           </div>
         </ion-card>
       </ion-col>
-      <ion-col (click)="goto('dashboard')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('dashboard')">
           <ion-icon class="iconsty" name="speedometer-outline"></ion-icon><div>Dashboard</div>
         </ion-card>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col (click)="goto('payoutgrid')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('payoutgrid')">
           <ion-icon class="iconsty" name="card-outline"></ion-icon><div>Payout Grid</div>
         </ion-card>
       </ion-col>
-      <ion-col (click)="goto('salesdata')">
-        <ion-card>
+      <ion-col >
+        <ion-card (click)="goto('salesdata')">
           <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Sales Data</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <ion-card (click)="goto('addbusiness')">
+          <ion-icon class="iconsty" name="add"></ion-icon><div>Add Business</div>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -115,8 +165,10 @@
   </ion-grid>
 </div>
 
-<ion-fab vertical="bottom" horizontal="center" (click)="goto('addbusiness')">
+<!-- <div style="font-size:30px;">Add Business</div> -->
+<div>
+<!-- <ion-fab vertical="bottom" horizontal="center" (click)="goto('addbusiness')">
   <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
-</ion-fab>
-
+</ion-fab> -->
+</div> 
 </ion-content>

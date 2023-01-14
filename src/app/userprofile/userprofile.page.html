@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -42,6 +42,12 @@
   <ion-item>
     <ion-label position="floating">Beneficiary Name</ion-label>
     <ion-input [(ngModel)]="userProfileOpj.beneficiary" [readonly]="bankDataRead"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Bank Name</ion-label>
+    <ion-select [(ngModel)]="userProfileOpj.bankname" [disabled]="bankDataRead">
+      <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Account Number</ion-label>

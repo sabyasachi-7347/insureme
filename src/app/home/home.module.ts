@@ -14,8 +14,8 @@ import { ContactsPageModule } from '../contacts/contacts.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    
+    ContactsPageModule
   ],
-  declarations: [HomePage,ContactsPageModule]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

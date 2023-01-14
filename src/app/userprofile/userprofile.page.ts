@@ -16,9 +16,16 @@ bankDataRead=true;
   colldata: any;
   docref:any;
   clickedimage: string;
+  banks: any = [];
   constructor(public firestore:AngularFirestore,public actionSheetController:ActionSheetController,public pluginServices:PluginutillService,) { }
 
-  ngOnInit() {
+ async ngOnInit() {
+    // this.banks = []
+     await this.firestore.collection("dropdown").doc('bankname').get().subscribe((doc:any)=>{
+      console.log(doc.data().bankname);
+      this.banks = doc.data().bankname;
+     })
+
     this.userData = JSON.parse(localStorage.userData);
     this.docref =  this.firestore.collection("users").doc(this.userData.email.trim());
      this.docref.get().subscribe((doc)=>{
@@ -31,6 +38,7 @@ bankDataRead=true;
     this.userProfileOpj.mobile = this.colldata.mobile?this.colldata.mobile:'';
     this.userProfileOpj.gender = this.colldata.gender?this.colldata.gender:'';
     this.userProfileOpj.beneficiary = this.colldata.beneficiary?this.colldata.beneficiary:'';
+    this.userProfileOpj.bankname = this.colldata.bankname?this.colldata.bankname:'';
     this.userProfileOpj.acno = this.colldata.acno?this.colldata.acno:'';
     this.userProfileOpj.ifsc = this.colldata.ifsc?this.colldata.ifsc:'';
     this.userProfileOpj.panno = this.colldata.panno?this.colldata.panno:'';
@@ -175,10 +183,15 @@ this.personalDataRead = false;
   alert("Invalid PAN Number");
   this.bankDataRead = false;
   return;
+}else if((this.userProfileOpj.bankname == '') || (this.userProfileOpj.bankname == undefined)){
+  alert("Please Select Bank Name");
+  this.bankDataRead = false;
+  return;
 }
 this.firestore.collection("users").doc(this.userData.email.trim()).set({
   "beneficiary":this.userProfileOpj.beneficiary,
   "acno":this.userProfileOpj.acno,
+  "bankname":this.userProfileOpj.bankname,
   "ifsc":this.userProfileOpj.ifsc,
   "panno":this.userProfileOpj.panno
 }, { merge: true }).then(()=>{

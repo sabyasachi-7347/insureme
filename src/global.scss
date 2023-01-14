@@ -29,8 +29,14 @@
 //     margin-top: 10%;
 //   }
 ion-content{
---background:#d5d2ff;
+--background:#9e9adb;
 ion-item{
     --background: none;
+    // --color:#bfebe7;
 }
+}
+
+.header-color{
+    --background: #5a4fe9;
+    --color: #ffffff;
 }

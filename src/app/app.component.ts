@@ -13,7 +13,7 @@ import {
   AngularFireObject,
 } from '@angular/fire/compat/database';
 // import * as firebase from 'firebase';
-
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -21,11 +21,13 @@ import {
 })
 export class AppComponent {
   fbasedb:any;
+  appVersions: Promise<string>;
   constructor(public router:Router,
     public platform:Platform,
     public splashScreen:SplashScreen,
     public aFire:AngularFirestore,
-    public aDb:AngularFireDatabase
+    public aDb:AngularFireDatabase,
+    private appVersion: AppVersion
     ) {
       // this.fbasedb = firebase;
 //     try {
@@ -37,7 +39,7 @@ export class AppComponent {
 //     } catch (error) {
 //       this.router.navigate(['intro']);
 //     }
-    
+this.appVersions = this.appVersion.getVersionNumber();
   }
   ngAfterViewInit() {
     this.initializeApp();

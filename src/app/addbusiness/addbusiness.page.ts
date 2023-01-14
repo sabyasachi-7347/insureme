@@ -20,7 +20,7 @@ export class AddbusinessPage implements OnInit {
     name: ['', [Validators.required,Validators.pattern('^[a-zA-Z ]+$')]],
     disburseDate: ['', [Validators.required]],
     disbursedAmount: ['', [Validators.required,Validators.pattern('^[0-9]{1,7}')]],
-    currentPoint:['', [Validators.required,Validators.pattern('^[0-9]{1,3}')]],
+    // currentPoint:['', [Validators.required,Validators.pattern('^[0-9]{1,3}')]],
     remarks:['', [Validators.required]]
      });
 
@@ -45,10 +45,10 @@ export class AddbusinessPage implements OnInit {
         { type: 'required', message: 'Please enter disbursed amount' },
         { type: 'pattern', message: 'Please enter valid amount' }
       ],
-      currentPoint: [
-        { type: 'required', message: 'Please enter current point' },
-        { type: 'pattern', message: 'Please enter valid percentage' }
-      ],
+      // currentPoint: [
+      //   { type: 'required', message: 'Please enter current point' },
+      //   { type: 'pattern', message: 'Please enter valid percentage' }
+      // ],
       remarks: [
         { type: 'required', message: 'Please enter remarks' }
       ]
@@ -74,9 +74,9 @@ export class AddbusinessPage implements OnInit {
     get disbursedAmount() {
       return this.addBusinessForm.get("disbursedAmount");
     }
-    get currentPoint() {
-      return this.addBusinessForm.get("currentPoint");
-    }
+    // get currentPoint() {
+    //   return this.addBusinessForm.get("currentPoint");
+    // }
     get remarks() {
       return this.addBusinessForm.get("remarks");
     }
@@ -108,7 +108,7 @@ export class AddbusinessPage implements OnInit {
 "name":this.addBusinessForm.value.name.trim(),
 "disburseDate":this.selectedDate.trim(),
 "disbursedAmount":this.addBusinessForm.value.disbursedAmount.trim(),
-"currentPoint":this.addBusinessForm.value.currentPoint.trim(),
+// "currentPoint":this.addBusinessForm.value.currentPoint.trim(),
 "remarks":this.addBusinessForm.value.remarks.trim(),
 "createdBy":this.curentUser.email,
        }).catch((error) => {

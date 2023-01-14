@@ -67,6 +67,38 @@ const routes: Routes = [
     path: 'forgotpassword',
     loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   },
+  {
+    path: 'totalcases',
+    loadChildren: () => import('./totalcases/totalcases.module').then( m => m.TotalcasesPageModule)
+  },
+  {
+    path: 'invalidcases',
+    loadChildren: () => import('./invalidcases/invalidcases.module').then( m => m.InvalidcasesPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'adminlogin',
+    loadChildren: () => import('./adminlogin/adminlogin.module').then( m => m.AdminloginPageModule)
+  },
+  {
+    path: 'adminpendingagents',
+    loadChildren: () => import('./adminpendingagents/adminpendingagents.module').then( m => m.AdminpendingagentsPageModule)
+  },
+  {
+    path: 'adminpendingbusiness',
+    loadChildren: () => import('./adminpendingbusiness/adminpendingbusiness.module').then( m => m.AdminpendingbusinessPageModule)
+  },
+  {
+    path: 'adminmonthlypayouts',
+    loadChildren: () => import('./adminmonthlypayouts/adminmonthlypayouts.module').then( m => m.AdminmonthlypayoutsPageModule)
+  },
+  {
+    path: 'adminpayoutsetting',
+    loadChildren: () => import('./adminpayoutsetting/adminpayoutsetting.module').then( m => m.AdminpayoutsettingPageModule)
+  },
 ];
 
 @NgModule({

@@ -9,7 +9,8 @@ import {
 } from '@angular/fire/compat/auth';
 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 
 @Component({
   selector: 'app-login',
@@ -20,14 +21,33 @@ export class LoginPage implements OnInit {
   passwordShow: any = false;
   passwordShowType: string = "password";
   colldata: any;
+  appVersions:any;
+  devicePlatform: string;
   // docref: any;
   constructor(public router:Router,
    public auth:AngularFireAuth,
    public firestore:AngularFirestore,
    public formBuilder: FormBuilder,
+   public appVer:AppVersion,
+   public plt:Platform,
    public toastController:ToastController
     ) {
+      console.log(this.appVer);
       
+      this.appVer.getVersionNumber().then((ver)=>{
+        this.appVersions = ver;
+        console.log(this.appVersions);
+      }).catch((err)=>{
+        console.log(err);
+      })
+
+     if(this.plt.is('android') || this.plt.is('ios')){
+      this.devicePlatform = "Mobile";
+     }else{
+      this.devicePlatform = "Web";
+     } 
+      
+
      }
 
      loginForm = this.formBuilder.group({
@@ -73,12 +93,21 @@ if(data.user.uid)
  this.colldata = docref.get().subscribe((doc)=>{
     console.log(doc.data());
     localStorage.userData = JSON.stringify(doc.data());
+    localStorage.role = JSON.stringify(doc.data().role);
+    if(doc.data().role == 'admin'){
+      this.goto('admin');
+    }else{
+      this.goto('loginwithpin')      
+    }
     return doc.data()
     
   })
+  console.log(this.colldata);
   
   localStorage.uuid = JSON.stringify(data.user.uid); 
-  this.goto('loginwithpin')
+  
+
+}else{
 
 }  
 })

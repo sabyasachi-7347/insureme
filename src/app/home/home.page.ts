@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { ContactsPageModule } from '../contacts/contacts.module';
 import { ContactsPage } from '../contacts/contacts.page';
-
+import { Animation, AnimationController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,7 +11,7 @@ import { ContactsPage } from '../contacts/contacts.page';
 })
 export class HomePage {
 
-  constructor(public router:Router,public modalCtrl: ModalController) {}
+  constructor(public router:Router,public modalCtrl: ModalController,private animationCtrl: AnimationController) {}
   goto(pagename){
 this.router.navigate([pagename]);
   }

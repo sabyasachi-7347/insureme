@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -12,27 +12,27 @@
     <ion-row style="text-align: center;">
       <ion-col>
           <ion-label>Total Points Redeem</ion-label>
-          <ion-input></ion-input>  
+          <ion-input [(ngModel)]="dashboard.totalredeem" readonly></ion-input>  
       </ion-col>
       <ion-col>
           <ion-label>Total Points Pending</ion-label>
-          <ion-input></ion-input>  
+          <ion-input [(ngModel)]="dashboard.totalpending" readonly></ion-input>  
       </ion-col>
       </ion-row>
       <ion-row style="text-align: center;">
       <ion-col>
           <ion-label>Total Paid Points</ion-label>
-          <ion-input></ion-input>  
+          <ion-input [(ngModel)]="dashboard.totalpaid" readonly></ion-input>  
       </ion-col>
       <ion-col>
         <ion-label>Total Number of Cases</ion-label>
-        <ion-input></ion-input>  
+        <ion-input (click)="goto('totalcases')" [(ngModel)]="dashboard.totalcases" readonly></ion-input>  
     </ion-col>
     </ion-row>
     <ion-row style="text-align: center;">
       <ion-col>
         <ion-label>Total Invalid Cases</ion-label>
-        <ion-input></ion-input>  
+        <ion-input (click)="goto('invalidcases')" [(ngModel)]="dashboard.invalidcases" readonly></ion-input>  
     </ion-col>
     </ion-row>
   </ion-grid>
@@ -40,8 +40,25 @@
   <ion-item>
     <ion-searchbar placeholder="Enter LAN Number"></ion-searchbar>
   </ion-item>
+  
+  <div>
+    <ion-card>
+      <ion-row>
+        <ion-col size="8">Aniket Salvi</ion-col>
+        <ion-col size="4">₹ 120000</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Issued Date</ion-col>
+        <ion-col>12-12-2022</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Status</ion-col>
+        <ion-col>Pending</ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 
-  <h2>Member Dashboard</h2>
+  <!-- <h2>Member Dashboard</h2>
   <ion-item>
     <ion-label position="floating">Select Member</ion-label>
     <ion-select placeholder="Select member" interface="action-sheet">
@@ -75,7 +92,7 @@
     <div class="btnStyle">
       <ion-button class="btnStyleIn">Search</ion-button>
     </div>
-  </ion-grid>
+  </ion-grid> -->
   <div class="btnStyle">
     <ion-button>Export to Exel</ion-button>
   </div>
