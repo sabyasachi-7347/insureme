@@ -16,11 +16,11 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Email ID <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input [(ngModel)]="email" (ionChange)="showBtn()"></ion-input>
+    <ion-input [(ngModel)]="email" requred (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input [(ngModel)]="mobile" (ionChange)="showBtn()"></ion-input>
+    <ion-input [(ngModel)]="mobile" type="number" requred (ionChange)="showBtn()"></ion-input>
   </ion-item>
   <!-- <ion-item *ngIf="false">
     <ion-label position="floating">Aadhar Number</ion-label>

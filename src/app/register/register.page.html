@@ -2,7 +2,7 @@
   <img src="../../assets/imgs/loginscreen.PNG" height="50%" width="100%">
   <h3 class="buttonCont">Register</h3>
   <h5 class="buttonCont">Let's help with some details.</h5>
-  <form [formGroup]="registerForm" (ngSubmit)="submitForm()" novalidate>
+  <form [formGroup]="registerForm" novalidate>
   <ion-item>
     <ion-label position="floating">Enter Your Full Name <ion-text color="danger">*</ion-text></ion-label>
     <ion-input formControlName="name"></ion-input>

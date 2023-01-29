@@ -108,9 +108,11 @@ export class AddbusinessPage implements OnInit {
 "name":this.addBusinessForm.value.name.trim(),
 "disburseDate":this.selectedDate.trim(),
 "disbursedAmount":this.addBusinessForm.value.disbursedAmount.trim(),
+"approvedbyadmin":'P',
 // "currentPoint":this.addBusinessForm.value.currentPoint.trim(),
 "remarks":this.addBusinessForm.value.remarks.trim(),
 "createdBy":this.curentUser.email,
+"agent":this.curentUser.enrolledby
        }).catch((error) => {
         console.log(error);
         alert("Unable to process request");

@@ -174,7 +174,7 @@ await actionSheet.present();
 "aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
 "aadhaarFront":this.aadharFrontImg,
 "aadhaarBack":this.aadharBackImg,
-"enrolledby":'admin',
+"enrolledby":this.registerForm.value.email.trim(),
 "approvedbyadmin":'false',
 "role":'agent'
          }).catch((error) => {

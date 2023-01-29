@@ -14,7 +14,7 @@
     <ion-icon name="camera" (click)="openCamera()"></ion-icon>
   </div>
   
-  <h3 class="buttonCont">Welcome {{user}}</h3>
+  <h3 class="buttonCont">Welcome {{userProfileOpj.name}}</h3>
   <br>
   <h5 class="buttonCont">Personal Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon></h5>
   <ion-item>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bank Management</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-input [(ngModel)]="bankname" placeholder="Enter Bank Name"></ion-input>
+  <ion-button (click)="addBank(bankname)">Add New Bank</ion-button>  
+</ion-item>
+<h3 style="text-align: center;">Bank List</h3>
+<ion-grid style="border: 2px solid; background-color: #ffffff;">
+  <ion-row >
+    <ion-col size="2">Sr No</ion-col>
+    <ion-col>Bank Name</ion-col>
+    <ion-col size="3">Remove</ion-col>
+  </ion-row>
+  <ion-row *ngFor="let bank of banks;let i=index;">
+    <ion-col size="2" style="border: 2px solid;">{{i+1}}</ion-col>
+    <ion-col style="border: 2px solid;">{{bank}}</ion-col>
+    <ion-col style="border: 2px solid;" size="3"><ion-icon name="trash" (click)="removeBank(i,bank)"></ion-icon></ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

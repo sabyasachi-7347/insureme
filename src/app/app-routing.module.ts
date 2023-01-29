@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'adminpayoutsetting',
     loadChildren: () => import('./adminpayoutsetting/adminpayoutsetting.module').then( m => m.AdminpayoutsettingPageModule)
   },
+  {
+    path: 'addbank',
+    loadChildren: () => import('./addbank/addbank.module').then( m => m.AddbankPageModule)
+  },
 ];
 
 @NgModule({
