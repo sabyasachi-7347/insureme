@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CommondataService {
 allPendingAgents:any=[];
-allPendingBusiness: any[];
+allPendingBusiness: any = [];
+  allBusinessUsers: any = [];
+  allInvalidBusiness: any = [];
   constructor() { }
 }

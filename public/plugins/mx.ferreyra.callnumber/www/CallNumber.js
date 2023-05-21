@@ -1,5 +1,4 @@
-cordova.define("mx.ferreyra.callnumber.CallNumber", function(require, exports, module) {
-var CallNumber = function(){};
+cordova.define("mx.ferreyra.callnumber.CallNumber", function(require, exports, module) { var CallNumber = function(){};
 
 CallNumber.prototype.callNumber = function(success, failure, number, bypassAppChooser){
     cordova.exec(success, failure, "CallNumber", "callNumber", [number, bypassAppChooser]);

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Member List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h2 style="text-align:center;">Member Dashboard</h2>
+  <ion-grid>
+  <ion-row>
+    <ion-col size="11">
+      <ion-item>
+      <ion-label position="floating">Search Member</ion-label>
+      <ion-input style="max-width: 70%;" [(ngModel)]="searchKey" (keyup)="searchMember(searchKey)"></ion-input>
+    </ion-item>
+    </ion-col>
+    <ion-col size="1" style="text-align:center;">
+      <ion-icon name="search"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<br>
+<ion-grid>
+  <ion-card *ngFor="let user of allUsers;let i = index;">
+  <ion-row >
+    <ion-col style="text-align: center;">
+      {{user.name}}
+    </ion-col>
+    
+  </ion-row>  
+  <ion-row >
+    <ion-col size="6" style="text-align: center;">
+      Mob: {{user.mobile}}
+    </ion-col>
+    <ion-col size="6" style="text-align: center;">
+      Email: {{user.email}}
+    </ion-col>
+  </ion-row>  
+  <ion-row >
+    <ion-col size="6" style="text-align: center;">
+    </ion-col>
+    <ion-col size="6" style="text-align: center;">
+      <ion-button (click)="viewBusiness(user.email,i)">View Business</ion-button>
+    </ion-col>
+  </ion-row> 
+  </ion-card>
+</ion-grid>
+</ion-content>

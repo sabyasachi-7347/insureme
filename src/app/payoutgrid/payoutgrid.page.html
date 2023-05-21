@@ -9,11 +9,8 @@
 
 <ion-content>
 <ion-card>
-  <ion-item>
-    <ion-label>JAN-2022</ion-label><ion-button>View</ion-button>
-  </ion-item>
-  <ion-item>
-    <ion-label>FEB-2022</ion-label><ion-button>View</ion-button>
+  <ion-item *ngFor="let payout of payouts;">
+    <ion-label>{{payout.date}}</ion-label><ion-button (click)="openPayout(payout)">View</ion-button>
   </ion-item>
 </ion-card>
 </ion-content>

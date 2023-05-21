@@ -29,7 +29,13 @@
 //     margin-top: 10%;
 //   }
 ion-content{
---background:#9e9adb;
+--background:#f5f4f9;
+ion-item{
+    text-align: justify;
+}
+ion-input{
+    border-bottom: solid 2px #a37bed;
+}
 ion-item{
     --background: none;
     // --color:#bfebe7;
@@ -37,6 +43,6 @@ ion-item{
 }
 
 .header-color{
-    --background: #5a4fe9;
+    --background: #ff3e3f;
     --color: #ffffff;
 }

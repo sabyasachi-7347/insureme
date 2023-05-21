@@ -18,17 +18,17 @@
     </ion-col>
   </ion-row>
   <div class="buttonCont" *ngIf="setPin == '2'">
-    <ion-button class="loginButton" (click)="signin()">Sign In</ion-button>
+    <ion-button class="loginButton" (click)="signin()" shape="round">Sign In</ion-button>
   </div>
   <div class="buttonCont" *ngIf="setPin == '0'">
-    <ion-button class="loginButton" (click)="setpin()">Set PIN</ion-button>
+    <ion-button class="loginButton" (click)="setpin()" shape="round">Set PIN</ion-button>
   </div>
   <div class="buttonCont" *ngIf="setPin == '1'">
-    <ion-button class="loginButton" (click)="confirmPin()">Confirm PIN</ion-button>
+    <ion-button class="loginButton" (click)="confirmPin()" shape="round">Confirm PIN</ion-button>
   </div>
   <br>
   <div class="buttonCont">
-    <a (click)="goto('login')" *ngIf="setPin == '2'">Forgot PIN ?</a>
+    <a (click)="forgotpin()" *ngIf="setPin == '2'">Forgot PIN ?</a>
   </div>
   <div class="buttonCont" *ngIf="setPin != '2'">
     <a (click)="goto('login')">Back to Login</a>

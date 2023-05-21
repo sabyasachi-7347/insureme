@@ -73,6 +73,7 @@ export class LoginPage implements OnInit {
   }
 
 async login(){
+  
   console.log(this.loginForm.value);
   if(this.loginForm.value.email.trim() == '' || this.loginForm.value.password.trim() == ''){
     alert("Please enter email and password");
@@ -110,6 +111,8 @@ if(data.user.uid)
 }else{
 
 }  
+}).catch((e)=>{
+console.log(e);
 })
 
 // let database = this.firestore.collection("users").snapshotChanges();

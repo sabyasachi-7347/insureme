@@ -103,6 +103,42 @@ const routes: Routes = [
     path: 'addbank',
     loadChildren: () => import('./addbank/addbank.module').then( m => m.AddbankPageModule)
   },
+  {
+    path: 'viewmemberlist',
+    loadChildren: () => import('./viewmemberlist/viewmemberlist.module').then( m => m.ViewmemberlistPageModule)
+  },
+  {
+    path: 'viewbusinesslist',
+    loadChildren: () => import('./viewbusinesslist/viewbusinesslist.module').then( m => m.ViewbusinesslistPageModule)
+  },
+  {
+    path: 'adminbusinessedit',
+    loadChildren: () => import('./adminbusinessedit/adminbusinessedit.module').then( m => m.AdminbusinesseditPageModule)
+  },
+  {
+    path: 'adminuploadpayoutgrid',
+    loadChildren: () => import('./adminuploadpayoutgrid/adminuploadpayoutgrid.module').then( m => m.AdminuploadpayoutgridPageModule)
+  },
+  {
+    path: 'viewimage',
+    loadChildren: () => import('./viewimage/viewimage.module').then( m => m.ViewimagePageModule)
+  },
+  {
+    path: 'adminuploadlampoffer',
+    loadChildren: () => import('./adminuploadlampoffer/adminuploadlampoffer.module').then( m => m.AdminuploadlampofferPageModule)
+  },
+  {
+    path: 'adminmanagemember',
+    loadChildren: () => import('./adminmanagemember/adminmanagemember.module').then( m => m.AdminmanagememberPageModule)
+  },
+  {
+    path: 'memberedit',
+    loadChildren: () => import('./memberedit/memberedit.module').then( m => m.MembereditPageModule)
+  },
+  {
+    path: 'payoutallbusiness',
+    loadChildren: () => import('./payoutallbusiness/payoutallbusiness.module').then( m => m.PayoutallbusinessPageModule)
+  },
 ];
 
 @NgModule({

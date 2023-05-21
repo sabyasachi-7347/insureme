@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "400437953754",
+    "firebase_url": "https://insureme-uat-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "insureme-uat",
+    "storage_bucket": "insureme-uat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400437953754:android:3dbfe796c7089fee5ed1e3",
+        "android_client_info": {
+          "package_name": "com.geniefin.gspl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400437953754-gcia155ngivemi4563la8k2vtlbvb3k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGX78pUKMVmHKm-QE7zZpk34LhrRX3leY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400437953754-gcia155ngivemi4563la8k2vtlbvb3k1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

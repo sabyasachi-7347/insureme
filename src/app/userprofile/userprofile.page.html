@@ -38,16 +38,18 @@
     </ion-select>
   </ion-item>  
   <br>
-  <h5 class="buttonCont">Payout Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon></h5>
+  <h5 class="buttonCont">Payout Details </h5>
+  <!-- <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon> -->
   <ion-item>
     <ion-label position="floating">Beneficiary Name</ion-label>
     <ion-input [(ngModel)]="userProfileOpj.beneficiary" [readonly]="bankDataRead"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Bank Name</ion-label>
-    <ion-select [(ngModel)]="userProfileOpj.bankname" [disabled]="bankDataRead">
+    <ion-input [(ngModel)]="userProfileOpj.bankname" [readonly]="bankDataRead"></ion-input>
+    <!-- <ion-select [(ngModel)]="userProfileOpj.bankname" [disabled]="bankDataRead">
       <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
-    </ion-select>
+    </ion-select> -->
   </ion-item>
   <ion-item>
     <ion-label position="floating">Account Number</ion-label>

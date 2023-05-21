@@ -10,8 +10,11 @@ import { Animation, AnimationController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  userRole: any;
 
-  constructor(public router:Router,public modalCtrl: ModalController,private animationCtrl: AnimationController) {}
+  constructor(public router:Router,public modalCtrl: ModalController,private animationCtrl: AnimationController) {
+    this.userRole = JSON.parse(localStorage.userData)['role'];
+  }
   goto(pagename){
 this.router.navigate([pagename]);
   }

@@ -8,8 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <h3 class="buttonCont">This change need to done every month</h3>
-  <br>
   <ion-item>
     <ion-label position="floating">Select Member <sup style="color: red;">*</sup></ion-label>
     <ion-select placeholder="Select member" [(ngModel)]="selectedMember" (ionChange)="getMember(selectedMember)">
@@ -48,9 +46,11 @@
   </ion-item>  
   <br>
   <div class="btnStyle">
-    <ion-button class="btnStyleIn" (click)="setPercent()">Set</ion-button>
+    <ion-button class="btnStyleIn" (click)="setPercent()" shape="round">Set</ion-button>
   </div>
 <br>
+
+<h5 class="danger-note">Note: This change need to done every month</h5>
 <!-- <ion-item>
   <ion-label position="floating">Enter Member Name</ion-label>
   <ion-input [(ngModel)]="searchName"></ion-input>
@@ -117,3 +117,6 @@
   </ion-row> -->
 <!-- </ion-grid> -->
 </ion-content>
+<ion-footer>
+  <ion-button (click)="goto('viewmemberlist')" expand="full" shape="round">View Member Business</ion-button>
+</ion-footer>

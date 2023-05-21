@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment Confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>Name :</ion-col>
+    <ion-col>{{agentDetails.name}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Bank :</ion-col>
+    <ion-col>{{agentDetails.bankname}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Beneficiary :</ion-col>
+    <ion-col>{{agentDetails.beneficiary}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>IFSC :</ion-col>
+    <ion-col>{{agentDetails.ifsc}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Account Number :</ion-col>
+    <ion-col>{{agentDetails.acno}}</ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-checkbox [checked]="selectAll" (ionChange)="changeSelectAll($event)"></ion-checkbox> -->
+      </ion-col>
+      <ion-col>
+        Business Name
+      </ion-col>
+      <ion-col>
+        Payable Amount
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let business of allAgentBusiness">
+      <ion-col>
+        <ion-checkbox [checked]="selectedCategory.indexOf(business.id) >= 0" (ionChange)="updateCheckedOptions(business.id,business,$event)"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        {{business.name}}
+      </ion-col>
+      <ion-col *ngIf="selection == 'agent'">
+        {{business.amountToPayAgent}}
+      </ion-col>
+      <ion-col *ngIf="selection != 'agent'">
+        {{business.amountToPaySubAgent}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" (click)="markPayment()">Mark Payment {{totalAmount}} As Paid</ion-button>
+</ion-footer>

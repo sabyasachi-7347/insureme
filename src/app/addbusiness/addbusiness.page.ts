@@ -11,6 +11,7 @@ export class AddbusinessPage implements OnInit {
   openDatetimeField: boolean = false;
   selectedDate: any="";
   curentUser: any;
+  banks: any = [];
 
   constructor(public formBuilder: FormBuilder,public auth:AngularFireAuth,public firestore:AngularFirestore,) { }
   addBusinessForm = this.formBuilder.group({
@@ -81,7 +82,11 @@ export class AddbusinessPage implements OnInit {
       return this.addBusinessForm.get("remarks");
     }
 
-  ngOnInit() {
+ async ngOnInit() {
+    await this.firestore.collection("dropdown").doc('bankname').get().subscribe((doc:any)=>{
+      console.log(doc.data().bankname);
+      this.banks = doc.data().bankname;
+     })
   }
   openDatetime(){
     this.openDatetimeField = true;
@@ -92,6 +97,8 @@ export class AddbusinessPage implements OnInit {
       this.selectedDate = this.selectedDate.split('T')[0];
       var selectedDateTemp = this.selectedDate.split('-')[2]+'-'+this.selectedDate.split('-')[1]+'-'+this.selectedDate.split('-')[0];
       this.selectedDate = selectedDateTemp;
+      console.log(this.selectedDate);
+      
     }
   }
 
@@ -101,18 +108,24 @@ export class AddbusinessPage implements OnInit {
       // console.log(data);
       // if(data.user.uid)
       // {
+        console.log(this.selectedDate);
+        
         await this.firestore.collection("business").doc().set({
-"typeOfBorrow":this.addBusinessForm.value.typeOfBorrow.trim(),
-"bankName":this.addBusinessForm.value.bankName.trim(),
-"lanNo":this.addBusinessForm.value.lanNo.trim(),
-"name":this.addBusinessForm.value.name.trim(),
-"disburseDate":this.selectedDate.trim(),
-"disbursedAmount":this.addBusinessForm.value.disbursedAmount.trim(),
+"typeOfBorrow":this.addBusinessForm.value.typeOfBorrow.trim()?this.addBusinessForm.value.typeOfBorrow.trim():'',
+"bankName":this.addBusinessForm.value.bankName.trim()?this.addBusinessForm.value.bankName.trim():'',
+"lanNo":this.addBusinessForm.value.lanNo.trim()?this.addBusinessForm.value.lanNo.trim():'',
+"name":this.addBusinessForm.value.name.trim()?this.addBusinessForm.value.name.trim():'',
+"disburseDate":this.selectedDate.trim()?this.selectedDate.trim():'',
+"disbursedAmount":this.addBusinessForm.value.disbursedAmount.trim()?this.addBusinessForm.value.disbursedAmount.trim():'',
 "approvedbyadmin":'P',
+"agentPaid":'false',
+"subAgentPaid":"false",
 // "currentPoint":this.addBusinessForm.value.currentPoint.trim(),
-"remarks":this.addBusinessForm.value.remarks.trim(),
-"createdBy":this.curentUser.email,
-"agent":this.curentUser.enrolledby
+"remarks":this.addBusinessForm.value.remarks.trim()?this.addBusinessForm.value.remarks.trim():'',
+"createdBy":this.curentUser.email?this.curentUser.email:'',
+"createdByName":this.curentUser.name?this.curentUser.name:'',
+"agent":this.curentUser.enrolledby?this.curentUser.enrolledby:'',
+"agentName":this.curentUser.enrolledbyName?this.curentUser.enrolledbyName:''
        }).catch((error) => {
         console.log(error);
         alert("Unable to process request");

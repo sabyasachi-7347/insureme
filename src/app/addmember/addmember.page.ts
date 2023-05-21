@@ -58,6 +58,7 @@ phoneReg:any = '/^[0-9]+${10}/';
 "email":this.email.trim(),
 "mobile":this.mobile,
 "enrolledby":this.curentUser.email,
+"enrolledbyName":this.curentUser.name,
 "role":'subagent'
          }).catch((error) => {
           console.log(error);

@@ -5,8 +5,13 @@
         <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
       </ion-col>
       <ion-col> -->
-        <ion-title style="text-align: center;">
-          <p>Welcome to Geniefin</p>
+
+        <ion-title >
+          <ion-row>
+            <ion-col size="9">Welcome to ThreeMan</ion-col>
+            <ion-col size="1.5"><ion-icon style="font-size: 30px; " (click)="logout()" name="power-outline"></ion-icon></ion-col>
+            <ion-col size="1.5"><ion-icon *ngIf="userRole == 'agent'" style="font-size: 30px; " (click)="openContactModal()" name="call"></ion-icon></ion-col>
+          </ion-row>
         </ion-title>
       <!-- </ion-col>
       <ion-col>
@@ -19,9 +24,9 @@
 
 <ion-content [fullscreen]="true">
   <div>
-  <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
-  <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
-  <ion-icon style="float: right; font-size: 30px; " (click)="openContactModal()" name="call"></ion-icon>
+  
+  <!-- <img *ngIf="userRole == 'agent'" style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png"> -->
+  
 </div>
 <!-- <div style="margin-top: 12%;">
   <h1>WELCOME TO</h1>
@@ -107,58 +112,127 @@
     <!-- <ion-row>
       <ion-col></ion-col>
     </ion-row> -->
+  
     <ion-row>
       <ion-col >
-        <ion-card (click)="goto('addmember')">
-          <ion-icon class="iconsty" name="person-add"></ion-icon><div>
-            Add Member
+
+        <div (click)="goto('userprofile')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/My_Profile.png">
+          </ion-avatar>
+          <div>
+            My Profile
           </div>
-        </ion-card>
+        </div>
+
+        <!-- <ion-card (click)="goto('userprofile')">
+          <ion-icon class="iconsty" name="newspaper-outline"></ion-icon><div>
+            My Profile
+          </div>
+        </ion-card> -->
       </ion-col>
       <ion-col >
-        <ion-card (click)="goto('managemember')">
+
+        <div (click)="goto('dashboard')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/dashboard.png">
+          </ion-avatar>
+          <div>
+            Dashboard
+          </div>
+        </div>
+
+        <!-- <ion-card (click)="goto('dashboard')">
+          <ion-icon class="iconsty" name="speedometer-outline"></ion-icon><div>Dashboard</div>
+        </ion-card> -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngIf="userRole == 'agent'">
+
+        <div (click)="goto('managemember')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/manage_members.png">
+          </ion-avatar>
+          <div>
+            Manage Members
+          </div>
+        </div>
+
+        <!-- <ion-card (click)="goto('managemember')">
           <ion-icon class="iconsty" name="people-outline"></ion-icon>
         <div>
           Manage Members
         </div>
-        </ion-card>
+        </ion-card> -->
       </ion-col>
-    </ion-row>
-  
-    <ion-row>
-      <ion-col >
-        <ion-card (click)="goto('userprofile')">
-          <ion-icon class="iconsty" name="newspaper-outline"></ion-icon><div>
-            My Profile
-          </div>
-        </ion-card>
-      </ion-col>
-      <ion-col >
-        <ion-card (click)="goto('dashboard')">
-          <ion-icon class="iconsty" name="speedometer-outline"></ion-icon><div>Dashboard</div>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+      <ion-col *ngIf="userRole == 'agent'">
 
-    <ion-row>
-      <ion-col >
-        <ion-card (click)="goto('payoutgrid')">
+        
+        <div (click)="goto('payoutgrid')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/payout table.png">
+          </ion-avatar>
+          <div>
+            Payout Grid
+          </div>
+        </div>
+
+        <!-- <ion-card (click)="goto('payoutgrid')">
           <ion-icon class="iconsty" name="card-outline"></ion-icon><div>Payout Grid</div>
-        </ion-card>
+        </ion-card> -->
       </ion-col>
-      <ion-col >
-        <ion-card (click)="goto('salesdata')">
-          <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Sales Data</div>
-        </ion-card>
-      </ion-col>
+      
     </ion-row>
 
     <ion-row style="text-align: center;">
-      <ion-col>
-        <ion-card (click)="goto('addbusiness')">
+      <ion-col size="6">
+
+        <div (click)="goto('addbusiness')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/addmembers.png">
+          </ion-avatar>
+          <div>
+            Add Business
+          </div>
+        </div>
+
+        <!-- <ion-card (click)="goto('addbusiness')">
           <ion-icon class="iconsty" name="add"></ion-icon><div>Add Business</div>
-        </ion-card>
+        </ion-card> -->
       </ion-col>
+      <ion-col size="6">
+
+        <div (click)="goto('salesdata')" class="menu_btn">
+          <ion-avatar class="iconsty">
+            <img src="../../assets/imgs/sales data.png"  height="10%" width="10%">
+          </ion-avatar>
+          <div>
+            Sales Data
+          </div>
+        </div>
+
+        <!-- <ion-card (click)="goto('salesdata')">
+          <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Sales Data</div>
+        </ion-card> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngIf="userRole == 'agent'" size="6">
+        <!-- <ion-card > -->
+          <div (click)="goto('addmember')" class="menu_btn">
+            <ion-avatar class="iconsty">
+              <img src="../../assets/imgs/add_member_icon_png.png">
+            </ion-avatar>
+            <div>
+              Add Member
+            </div>
+          </div>
+          
+        <!-- </ion-card> -->
+      </ion-col>
+      
     </ion-row>
   
   </ion-grid>

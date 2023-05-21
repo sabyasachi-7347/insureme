@@ -16,14 +16,42 @@
     </ion-col>
     
   </ion-row>  
-  <ion-row >
+  <ion-row>
     <ion-col size="6" style="text-align: center;">
-      Mob: {{user.mobile}}
+      Mob: 
     </ion-col>
     <ion-col size="6" style="text-align: center;">
-      Email: {{user.email}}
+      {{user.mobile}}
     </ion-col>
-  </ion-row>  
+  </ion-row>
+  
+  <ion-row>
+    <ion-col size="6" style="text-align: center;">
+      Email:
+    </ion-col>
+    <ion-col size="6" style="text-align: center;">
+       {{user.email}}
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6" style="text-align: center;">
+      Aadhaar Number:
+    </ion-col>
+    <ion-col size="6" style="text-align: center;">
+      {{user.aadhaar}}
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6" style="text-align: center;">
+      <img [src]="user.aadhaarFront" height="200px" width="350px">
+    </ion-col>
+    <ion-col size="6" style="text-align: center;">
+      <img [src]="user.aadhaarBack" height="200px" width="350px">
+    </ion-col>
+  </ion-row>
+  
   <ion-row >
     <ion-col size="6" style="text-align: center;">
     <ion-button (click)="reject(user.email,i)">Reject</ion-button>

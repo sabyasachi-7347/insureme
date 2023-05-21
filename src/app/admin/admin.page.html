@@ -130,16 +130,25 @@
     <ion-row>
       <ion-col >
         <ion-card (click)="goto('adminmonthlypayouts')">
-          <div>0</div><div>
-            Pending Monthly Payouts
+          <ion-icon class="iconsty" name="wallet-outline"></ion-icon>
+          <div>
+            Pending Payouts
           </div>
         </ion-card>
       </ion-col>
-      <ion-col >
+      <ion-col>
+        <ion-card (click)="goto('adminmanagemember')">
+          <ion-icon class="iconsty" name="people-outline"></ion-icon>
+        <div>
+          Manage Members
+        </div>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col >
         <ion-card (click)="goto('adminpayoutsetting')">
           <div>0</div><div>Pending Payout Setting</div>
         </ion-card>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
 
     <ion-row>
@@ -148,21 +157,20 @@
           <ion-icon class="iconsty" name="card-outline"></ion-icon><div>Add Bank</div>
         </ion-card>
       </ion-col>
-      <!-- <ion-col >
-        <ion-card (click)="goto('salesdata')">
-          <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Sales Data</div>
+      <ion-col >
+        <ion-card (click)="goto('adminuploadpayoutgrid')">
+          <ion-icon class="iconsty" name="stats-chart-outline"></ion-icon><div>Payuot Grid Upload</div>
         </ion-card>
-      </ion-col> -->
+      </ion-col>
     </ion-row>
 
-    <!-- <ion-row style="text-align: center;">
-      <ion-col>
-        <ion-card (click)="goto('addbusiness')">
-          <ion-icon class="iconsty" name="add"></ion-icon><div>Add Business</div>
+    <!-- <ion-row style="text-align: center; color: #ffffff;">
+      <ion-col size="6">
+        <ion-card (click)="goto('adminuploadlampoffer')">
+          <img class="iconsty" height="50px" sstyle="max-height: 30%;color:#ffffff; max-width: 30%;" src="../../assets/imgs/lamp.png"><div>Lamp Offers Upload</div>
         </ion-card>
       </ion-col>
     </ion-row> -->
-  
   </ion-grid>
 </div>
 

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Member Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col>Name :</ion-col>
+    {{userData.name}}
+    <ion-col><ion-input [(ngModel)]="userData.name"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Email :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.email" readonly></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Gender :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.gender"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Mobile :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.mobile"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Aadhaar :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.aadhaar"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Bank Name :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.bankname"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Account number :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.acno"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Beneficiary :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.beneficiary"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>IFSC Number :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.ifsc"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>PAN Number :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.panno"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Role :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.role"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Enrolled By :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.enrolledby"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Points (in %) :</ion-col>
+    <ion-col><ion-input [(ngModel)]="userData.percentage"></ion-input></ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col></ion-col>
+    <ion-col><ion-input [(ngModel)]="userData"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col><ion-input [(ngModel)]="userData"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col><ion-input [(ngModel)]="userData"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col><ion-input [(ngModel)]="userData"></ion-input></ion-col>
+  </ion-row> -->
+  <ion-item>
+    <ion-button (click)="updateDetails()" expand="full">Update</ion-button>
+  </ion-item>
+</ion-grid>
+
+</ion-content>

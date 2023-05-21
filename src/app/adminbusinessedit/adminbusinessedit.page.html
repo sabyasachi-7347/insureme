@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modify Business Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col>Name</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.name"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>LAN</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.lanNo"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Agent Name</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.agentName" readonly disabled></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Agent Email</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.agent" readonly disabled></ion-input></ion-col>
+  </ion-row>
+  <ion-row *ngIf="business.agent != business.createdBy">
+    <ion-col>Sub Agent Name</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.createdByName" readonly disabled></ion-input></ion-col>
+  </ion-row>
+  <ion-row *ngIf="business.agent != business.createdBy">
+    <ion-col>Sub Agent Email</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.createdBy" readonly disabled></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Agent Points (in %)</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.pointsAgent" (keyup)="pointChange()" type="number"></ion-input></ion-col>
+  </ion-row>
+  <ion-row *ngIf="business.agent != business.createdBy">
+    <ion-col>Sub-Agent Points (in %)</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.points" (keyup)="pointChange()" type="number"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Amount</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.disbursedAmount" (keyup)="pointChange()" type="number"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-col>Type of Loans</ion-col>
+      <ion-col>
+      <ion-select placeholder="Type of Loans" interface="action-sheet" [(ngModel)]="business.typeOfBorrow">
+        <ion-select-option value="home">Home</ion-select-option>
+        <ion-select-option value="personal">Personal</ion-select-option>
+        <ion-select-option value="mortgage">Mortgage</ion-select-option>
+        <ion-select-option value="business">Business</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Disbursed Date</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.disburseDate"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Bank Name</ion-col>
+    <ion-col>
+      <ion-select placeholder="Select Bank" interface="action-sheet" [(ngModel)]="business.bankName">
+        <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Remark</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.remarks"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>Agent Amount</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.amountToPayAgent" type="number"></ion-input></ion-col>
+  </ion-row>
+  <ion-row *ngIf="business.agent != business.createdBy">
+    <ion-col>Sub-Agent Amount</ion-col>
+    <ion-col><ion-input [(ngModel)]="business.amountToPaySubAgent" type="number"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <ion-button (click)="reject()">Reject</ion-button>
+      </ion-col>
+      <!-- <ion-col style="text-align: center;">
+        <ion-button (click)="approve(user.id,i)">Approve</ion-button>
+      </ion-col> -->
+      <ion-col size="6" style="text-align: center;">
+      <ion-button (click)="hold()">Hold</ion-button>
+      </ion-col>
+    <!-- <ion-col><ion-button (click)="goBack()">Back</ion-button></ion-col> -->
+    <ion-col><ion-button (click)="updateDetails()">Approve</ion-button></ion-col>
+  </ion-row>
+  
+</ion-grid>
+
+
+</ion-content>

@@ -8,18 +8,24 @@ import { Router } from '@angular/router';
 })
 export class LoginwithpinPage implements OnInit {
   enteredPin: any;
-  d1: any;
-  d2: string;
-  d3: string;
-  d4: string;
+  d1: any = "";
+  d2: any = "";
+  d3: any = "";
+  d4: any = "";
   firstPIN: any;
   secondPIN: any;
 
   constructor(public router:Router) { }
   setPin:any;
-  ngOnInit() {
+  ngOnInit() { }
+
+  ionViewWillEnter(){
+    this.d1 = "";
+    this.d2 = "";
+    this.d3 = "";
+    this.d4 = "";
     try{
-      if(localStorage.pin){
+      if(localStorage.pin && localStorage.pin !=""){
         this.setPin = '2';
       }else{
         this.setPin = '0';
@@ -27,8 +33,8 @@ export class LoginwithpinPage implements OnInit {
     }catch(e){
       this.setPin = '0';
     }
-    
   }
+
   goto(page){
     this.router.navigate([page]);
   }
@@ -98,5 +104,13 @@ export class LoginwithpinPage implements OnInit {
       this.d4="";
       return;
     }
+  }
+
+  forgotpin(){
+    localStorage.pin="";
+    localStorage.role="";
+    localStorage.uuid="";
+    localStorage.userData="";
+    this.goto('login');
   }
 }

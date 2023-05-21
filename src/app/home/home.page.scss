@@ -62,7 +62,9 @@ ion-col{
 ////#d5d2ff
 
 .iconsty {
-  margin-top: 20px;
+  margin-left: 30%;
+  border: 2px solid #e9e6e6;
+  background: #ffffff;
 }
 
 .iconstyaddb{
@@ -70,7 +72,43 @@ ion-col{
 }
 
 ion-card{
-  background-color: #3880ff;
-  color: #ffffff;
-  font-size: 38px;
+  // background-color: #3880ff;
+  // color: #ffffff;
+  // font-size: 38px;
+      /* background-color: #2b5eb9; */
+      // color: #5b6eec;
+      // background: none;
+      // border: solid 2px #1919da;
+      // font-size: 38px;
+      color: #0b0b0c;
+      background: none;
+      // background: #b5bceb;
+      // border: solid 2px #1919da;
+      // border-start-start-radius: 20%;
+      // border-start-end-radius: 10%;
+      // border-end-start-radius: 10%;
+      // border-end-end-radius: 20%;
+      font-size: 38px;
 }
+
+.menu_btn
+  {
+    // background-color: #3880ff;
+    // color: #ffffff;
+    // font-size: 38px;
+        /* background-color: #2b5eb9; */
+        // color: #5b6eec;
+        // background: none;
+        // border: solid 2px #1919da;
+        // font-size: 38px;
+        color: #0b0b0c;
+        background: none;
+        // background: #b5bceb;
+        // border: solid 2px #1919da;
+        // border-start-start-radius: 20%;
+        // border-start-end-radius: 10%;
+        // border-end-start-radius: 10%;
+        // border-end-end-radius: 20%;
+        text-align: center;
+        font-size: 38px;
+  }
