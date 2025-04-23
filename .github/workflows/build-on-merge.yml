@@ -23,21 +23,34 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Set up Android SDK
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: Nexus 6
+          disable-animations: true
+
+      - name: Install Android Build Tools 30.0.3
+        run: |
+          yes | sdkmanager "build-tools;30.0.3" "platforms;android-30"
+
       - name: Install Dependencies
         run: npm install
 
       - name: Install Ionic & Cordova CLI
         run: npm install -g @ionic/cli cordova
 
-      - name: Build Android APK
+      - name: Build Android APK (Debug)
         run: |
-          ionic cordova build android --release
+          ionic cordova build android
 
-      - name: Upload APK
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-unsigned.apk
-          path: platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+          name: app-debug.apk
+          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
 
   ios:
     runs-on: macos-latest
@@ -60,10 +73,6 @@ jobs:
       - name: Build iOS App
         run: |
           ionic cordova build ios --release
-
-      # Exporting IPA requires a bit more setup with signing, e.g.:
-      # - Setup code signing via fastlane or xcodebuild
-      # - Export using xcodebuild or fastlane
 
       - name: Upload IPA (manual export needed)
         uses: actions/upload-artifact@v4
