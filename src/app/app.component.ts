@@ -67,7 +67,7 @@ this.appVersions = this.appVersion.getVersionNumber();
         "name":documentSnapshot.payload.doc.data()['name']
       };
       });
-      console.log("Data");
+      // console.log("Data");
       
       console.log(data);
       
