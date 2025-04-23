@@ -109,10 +109,23 @@ if(data.user.uid)
   
 
 }else{
-
+  var toast = await this.toastController.create({
+    message: 'Something Went Wrong... Please contact Admin/Agent',
+    duration: 5000,
+    position: 'top',
+  })
+  
+  toast.present();
 }  
-}).catch((e)=>{
+}).catch(async(e)=>{
 console.log(e);
+var toast = await this.toastController.create({
+  message: 'Something Went Wrong... Please contact Admin/Agent',
+  duration: 5000,
+  position: 'top',
+})
+
+toast.present();
 })
 
 // let database = this.firestore.collection("users").snapshotChanges();

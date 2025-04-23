@@ -15,7 +15,7 @@
   </ion-row>
   <ion-row>
     <ion-col>LAN</ion-col>
-    <ion-col><ion-input [(ngModel)]="business.lanNo"></ion-input></ion-col>
+    <ion-col><ion-input [(ngModel)]="business.lanNo" [readonly]="true" disabled></ion-input></ion-col>
   </ion-row>
   <ion-row>
     <ion-col>Agent Name</ion-col>
@@ -74,11 +74,11 @@
   </ion-row>
   <ion-row>
     <ion-col>Agent Amount</ion-col>
-    <ion-col><ion-input [(ngModel)]="business.amountToPayAgent" type="number"></ion-input></ion-col>
+    <ion-col><ion-input [(ngModel)]="business.amountToPayAgent" type="number" disabled></ion-input></ion-col>
   </ion-row>
   <ion-row *ngIf="business.agent != business.createdBy">
     <ion-col>Sub-Agent Amount</ion-col>
-    <ion-col><ion-input [(ngModel)]="business.amountToPaySubAgent" type="number"></ion-input></ion-col>
+    <ion-col><ion-input [(ngModel)]="business.amountToPaySubAgent" type="number" disabled></ion-input></ion-col>
   </ion-row>
   <ion-row>
     <ion-col style="text-align: center;">

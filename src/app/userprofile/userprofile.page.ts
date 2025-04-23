@@ -17,6 +17,7 @@ bankDataRead=true;
   docref:any;
   clickedimage: string;
   banks: any = [];
+  showBankEdit: any;
   constructor(public firestore:AngularFirestore,public actionSheetController:ActionSheetController,public pluginServices:PluginutillService,) { }
 
  async ngOnInit() {
@@ -43,6 +44,11 @@ bankDataRead=true;
     this.userProfileOpj.ifsc = this.colldata.ifsc?this.colldata.ifsc:'';
     this.userProfileOpj.panno = this.colldata.panno?this.colldata.panno:'';
     this.userProfileOpj.profilePicture = this.colldata.profilePicture?this.colldata.profilePicture:'';
+    if(this.userProfileOpj.acno == ''){
+      this.showBankEdit = true;
+    }else{
+      this.showBankEdit = false;
+    }
      })
     
   }
@@ -196,6 +202,7 @@ this.firestore.collection("users").doc(this.userData.email.trim()).set({
   "panno":this.userProfileOpj.panno
 }, { merge: true }).then(()=>{
   console.log("Bank Data Save entered");
+  this.showBankEdit = false;
 }).catch((err)=>{
   console.log(err);  
 })

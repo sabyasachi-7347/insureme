@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class TotalcasesPage implements OnInit {
   allcases:any = [];
+  searchInput:any='';
   constructor(public commondataService:CommondataService,public firestore:AngularFirestore) { }
 
   ngOnInit() {

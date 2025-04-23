@@ -1,24 +1,18 @@
 <ion-header>
   <ion-toolbar class="header-color"> 
-    <!-- <ion-row>
-      <ion-col>
-        <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">
-      </ion-col>
-      <ion-col> -->
-        <ion-title style="text-align: center;">
-          <p>Welcome to Geniefin</p>
+        <ion-title>
+          <ion-row>
+            <ion-col size="10.5" style="text-align: center; margin: 0;">
+              <p>Welcome to ThreeMan</p>
+            </ion-col>
+              <ion-col style="text-align: center; margin: 0;" size="1.5"><ion-icon style="font-size: 30px; " (click)="logout()" name="power-outline"></ion-icon></ion-col>
+          </ion-row>
         </ion-title>
-      <!-- </ion-col>
-      <ion-col>
-        <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
-        <ion-icon style="float: right; font-size: 30px; " (click)="openContactModal()" name="call"></ion-icon>
-      </ion-col>
-    </ion-row> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
+  <!-- <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon> -->
   <!-- <div>
   <ion-icon style="float: right; font-size: 30px; margin-right: 7%; " (click)="logout()" name="power-outline"></ion-icon>
   <img style="width: 30px; height: 30px; float: left; margin-left: 7%;" (click)="goto('lampoffers')" src="../../assets/imgs/lamp.png">

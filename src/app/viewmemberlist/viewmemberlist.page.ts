@@ -13,6 +13,7 @@ export class ViewmemberlistPage implements OnInit {
   allUsers: any=[];
   users:any;
   allUsersSave: any=[];
+  searchKey:any='';
   constructor(public commondataService:CommondataService,public router:Router,public firestore:AngularFirestore,) { }
 
   ngOnInit() {
