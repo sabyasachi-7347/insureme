@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <img src="../../assets/imgs/addmembers.png" height="35%">
+  <img src="../../assets/imgs/addmembers.png" height="35%" width="100%">
 <form [formGroup]="addBusinessForm" novalidate>
   <ion-item>
-    <ion-label position="floating">Type of borrow</ion-label>
-    <ion-select placeholder="Type of borrow" interface="action-sheet" formControlName="typeOfBorrow">
+    <ion-label position="floating">Type of Loans</ion-label>
+    <ion-select placeholder="Type of Loans" interface="action-sheet" formControlName="typeOfBorrow">
       <ion-select-option value="home">Home</ion-select-option>
       <ion-select-option value="personal">Personal</ion-select-option>
       <ion-select-option value="mortgage">Mortgage</ion-select-option>
@@ -24,31 +24,19 @@
          <small class="serror-message">{{error.message}}</small>
        </ng-container> 
      </div>
-  <ion-item>
-    <ion-label position="floating">Bank Name</ion-label>
-    <ion-select placeholder="Bank Name" interface="action-sheet" formControlName="bankName">
-      <ion-select-option value="hdfc">HDFC</ion-select-option>
-      <ion-select-option value="icic">ICICI</ion-select-option>
-      <ion-select-option value="idfc">IDFC</ion-select-option>
-      <ion-select-option value="adityabirla">Aditya Birla</ion-select-option>
-      <ion-select-option value="incred">Incred</ion-select-option>
-      <ion-select-option value="kotak">Kotak</ion-select-option>
-      <ion-select-option value="flutron">Flutron</ion-select-option>
-      <ion-select-option value="bajajfinance">Bajaj Finance</ion-select-option>
-      <ion-select-option value="yesbank">Yes bank</ion-select-option>
-      <ion-select-option value="axisfinance">Axis finance</ion-select-option>
-      <ion-select-option value="axisbank">Axis bank</ion-select-option>
-      <ion-select-option value="standardchartered">Standard chartered</ion-select-option>
-      <ion-select-option value="tatacapital">Tata Capital</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Bank Name</ion-label>
+      <ion-select placeholder="Bank Name" formControlName="bankName">
+        <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
+      </ion-select>
+    </ion-item>
   <div *ngFor="let error of errorMessages.bankName">
     <ng-container *ngIf="bankName.hasError(error.type)"> 
          <small class="serror-message">{{error.message}}</small>
        </ng-container> 
      </div>
   <ion-item>
-    <ion-label position="floating">LAN ID Number </ion-label>
+    <ion-label position="floating">Aplication / LAN ID Number </ion-label>
     <ion-input formControlName="lanNo"></ion-input>
   </ion-item>
   <div *ngFor="let error of errorMessages.lanNo">
@@ -92,7 +80,7 @@
          <small class="serror-message">{{error.message}}</small>
        </ng-container> 
      </div>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label position="floating">Current Points %</ion-label>
     <ion-input formControlName="currentPoint"></ion-input>
   </ion-item>
@@ -100,7 +88,7 @@
     <ng-container *ngIf="currentPoint.hasError(error.type)"> 
          <small class="serror-message">{{error.message}}</small>
        </ng-container> 
-     </div>
+     </div> -->
   <ion-item>
     <ion-label position="floating">Remarks</ion-label>
     <ion-input formControlName="remarks"></ion-input>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,64 +8,76 @@
 </ion-header>
 
 <ion-content>
-  <h3 class="buttonCont">This change need to done every month</h3>
-  <br>
   <ion-item>
-    <ion-label position="floating">Select Member</ion-label>
-    <ion-select placeholder="Select member">
+    <ion-label position="floating">Select Member <sup style="color: red;">*</sup></ion-label>
+    <ion-select placeholder="Select member" [(ngModel)]="selectedMember" (ionChange)="getMember(selectedMember)">
       <ion-select-option value="all">All Members</ion-select-option>
-      <ion-select-option value="m1">M1</ion-select-option>
-      <ion-select-option value="m2">M2</ion-select-option>
+      <ion-select-option *ngFor="let member of memberList" value="{{member.value}}">{{member.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Select Date</ion-label>
-    <ion-select placeholder="Select date">
-      <ion-select-option value="all">All Members</ion-select-option>
-    </ion-select>
+    <ion-label position="floating">Select From Date <sup style="color: red;">*</sup></ion-label>
+    <ion-input (click)="openFromDatetime()" [readonly]="true" value="{{selectedFromDate}}" *ngIf="!openFromDatetimeField"></ion-input>
+    
+<div *ngIf="openFromDatetimeField">
+  <ion-datetime placeholder="Select Date" displayFormat="DD-MM-YYYY" [(ngModel)]="selectedFromDate" ></ion-datetime>
+  <ion-button (click)="hideFromDatetime()">OK</ion-button>
+</div>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Select Bank</ion-label>
-    <ion-select placeholder="Select bank">
+    <ion-label position="floating">Select To Date <sup style="color: red;">*</sup></ion-label>
+    <ion-input (click)="openToDatetime()" [readonly]="true" value="{{selectedToDate}}" *ngIf="!openToDatetimeField"></ion-input>
+    
+<div *ngIf="openToDatetimeField">
+  <ion-datetime placeholder="Select Date" displayFormat="DD-MM-YYYY" [(ngModel)]="selectedToDate" ></ion-datetime>
+  <ion-button (click)="hideToDatetime()">OK</ion-button>
+</div>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Select Bank <sup style="color: red;">*</sup></ion-label>
+    <ion-select placeholder="Select bank" [(ngModel)]="selectedBank" (ionChange)="setBank(selectedBank)" [disabled]="hideBankDropdown">
       <ion-select-option value="all">All Banks</ion-select-option>
-      <ion-select-option value="b1">B1</ion-select-option>
-      <ion-select-option value="b2">B2</ion-select-option>
+      <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Set % for me</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Set % for member <sup style="color: red;">*</sup></ion-label>
+    <ion-input [(ngModel)]="percentEntered" (keyup)="checkPercentage()"></ion-input>
   </ion-item>  
   <br>
   <div class="btnStyle">
-    <ion-button class="btnStyleIn">Set</ion-button>
+    <ion-button class="btnStyleIn" (click)="setPercent()" shape="round">Set</ion-button>
   </div>
 <br>
-<ion-item>
+
+<h5 class="danger-note">Note: This change need to done every month</h5>
+<!-- <ion-item>
   <ion-label position="floating">Enter Member Name</ion-label>
-  <ion-input></ion-input>
+  <ion-input [(ngModel)]="searchName"></ion-input>
 </ion-item>  
 <div class="btnStyle">
-<ion-button class="btnStyleIn">Search</ion-button>
+<ion-button class="btnStyleIn" (click)="searchNameBtn()">Search</ion-button>
 </div>
+<div *ngIf="memberListSearch.length">
+  <h3 style="text-align:center;">Members List</h3>
+  <div>
+    <ion-grid class="ion-margin">
+    <ion-row>
+  <ion-col size="2">Sr. No</ion-col>
+  <ion-col size="3">Name</ion-col>
+  <ion-col size="4">Mobile</ion-col>
+  <ion-col size="3">View Business</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let memberSearch of memberListSearch; let i = index">
+      <ion-col size="2">{{i+1}}</ion-col>
+      <ion-col size="3">{{memberSearch.name}}</ion-col>
+      <ion-col size="4">{{memberSearch.mobile}}</ion-col>
+      <ion-col size="3"><ion-button class="btnStyleIn">View</ion-button></ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+</div> -->
 
-<h3>Members List</h3>
-<div>
-  <ion-grid class="ion-margin">
-  <ion-row>
-<ion-col size="2">Sr. No</ion-col>
-<ion-col size="3">Name</ion-col>
-<ion-col size="4">Mobile</ion-col>
-<ion-col size="3">View Business</ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="2">1</ion-col>
-    <ion-col size="3">Suresh</ion-col>
-    <ion-col size="4">7878757472</ion-col>
-    <ion-col size="3"><ion-button class="btnStyleIn">View</ion-button></ion-col>
-      </ion-row>
-    </ion-grid>
-</div>
 
 <br>
 <!-- <h2>Member Dashboard</h2>
@@ -105,3 +117,6 @@
   </ion-row> -->
 <!-- </ion-grid> -->
 </ion-content>
+<ion-footer>
+  <ion-button (click)="goto('viewmemberlist')" expand="full" shape="round">View Member Business</ion-button>
+</ion-footer>

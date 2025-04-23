@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -14,7 +14,7 @@
     <ion-icon name="camera" (click)="openCamera()"></ion-icon>
   </div>
   
-  <h3 class="buttonCont">Welcome {{user}}</h3>
+  <h3 class="buttonCont">Welcome {{userProfileOpj.name}}</h3>
   <br>
   <h5 class="buttonCont">Personal Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!personalDataRead" (click)="changeReadPersonal(personalDataRead)"></ion-icon></h5>
   <ion-item>
@@ -38,10 +38,21 @@
     </ion-select>
   </ion-item>  
   <br>
-  <h5 class="buttonCont">Payout Details <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon></h5>
+  
+  <h5 class="buttonCont">Payout Details </h5> 
+  <div *ngIf="showBankEdit">
+    <ion-icon style="float: right; margin-right:20%;" slot="end" name="pencil" *ngIf="bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon><ion-icon style="float: right; margin-right:20%;" slot="end" name="checkmark" *ngIf="!bankDataRead" (click)="changeReadBank(bankDataRead)"></ion-icon>
+  </div><br>
   <ion-item>
     <ion-label position="floating">Beneficiary Name</ion-label>
     <ion-input [(ngModel)]="userProfileOpj.beneficiary" [readonly]="bankDataRead"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Bank Name</ion-label>
+    <ion-input [(ngModel)]="userProfileOpj.bankname" [readonly]="bankDataRead"></ion-input>
+    <!-- <ion-select [(ngModel)]="userProfileOpj.bankname" [disabled]="bankDataRead">
+      <ion-select-option *ngFor="let bank of banks" value="{{bank}}">{{bank}}</ion-select-option>
+    </ion-select> -->
   </ion-item>
   <ion-item>
     <ion-label position="floating">Account Number</ion-label>

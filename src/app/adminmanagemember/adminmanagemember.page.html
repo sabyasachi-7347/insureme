@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Agents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="changeButton('agent')" class="alginment">
+        <ion-card [ngClass]="isAgent ? 'card-blue': 'card-grey'">
+          <div>All Agents</div>
+        </ion-card>
+      </ion-col>
+      <ion-col (click)="changeButton('subAgent')" class="alginment">
+        <ion-card [ngClass]="!isAgent ? 'card-blue': 'card-grey'">
+          <div>All Sub Agents</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid *ngIf="isAgent">
+      <ion-card *ngFor="let agent of allAgents">
+        <ion-row>
+          <ion-col>Name :</ion-col>
+          <ion-col>{{agent.name}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Bank :</ion-col>
+          <ion-col>{{agent.email}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="edit(agent)" [expanded]="full" style="float:right;">Edit</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+  </ion-grid>
+  
+  <ion-grid *ngIf="!isAgent">
+    <ion-card *ngFor="let agent of allSubAgents">
+      <ion-row>
+        <ion-col>Name :</ion-col>
+        <ion-col>{{agent.name}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Email :</ion-col>
+        <ion-col>{{agent.email}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="edit(agent)" [expanded]="full" style="float:right;">Edit</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

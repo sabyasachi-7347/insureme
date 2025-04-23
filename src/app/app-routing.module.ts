@@ -67,6 +67,78 @@ const routes: Routes = [
     path: 'forgotpassword',
     loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   },
+  {
+    path: 'totalcases',
+    loadChildren: () => import('./totalcases/totalcases.module').then( m => m.TotalcasesPageModule)
+  },
+  {
+    path: 'invalidcases',
+    loadChildren: () => import('./invalidcases/invalidcases.module').then( m => m.InvalidcasesPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'adminlogin',
+    loadChildren: () => import('./adminlogin/adminlogin.module').then( m => m.AdminloginPageModule)
+  },
+  {
+    path: 'adminpendingagents',
+    loadChildren: () => import('./adminpendingagents/adminpendingagents.module').then( m => m.AdminpendingagentsPageModule)
+  },
+  {
+    path: 'adminpendingbusiness',
+    loadChildren: () => import('./adminpendingbusiness/adminpendingbusiness.module').then( m => m.AdminpendingbusinessPageModule)
+  },
+  {
+    path: 'adminmonthlypayouts',
+    loadChildren: () => import('./adminmonthlypayouts/adminmonthlypayouts.module').then( m => m.AdminmonthlypayoutsPageModule)
+  },
+  {
+    path: 'adminpayoutsetting',
+    loadChildren: () => import('./adminpayoutsetting/adminpayoutsetting.module').then( m => m.AdminpayoutsettingPageModule)
+  },
+  {
+    path: 'addbank',
+    loadChildren: () => import('./addbank/addbank.module').then( m => m.AddbankPageModule)
+  },
+  {
+    path: 'viewmemberlist',
+    loadChildren: () => import('./viewmemberlist/viewmemberlist.module').then( m => m.ViewmemberlistPageModule)
+  },
+  {
+    path: 'viewbusinesslist',
+    loadChildren: () => import('./viewbusinesslist/viewbusinesslist.module').then( m => m.ViewbusinesslistPageModule)
+  },
+  {
+    path: 'adminbusinessedit',
+    loadChildren: () => import('./adminbusinessedit/adminbusinessedit.module').then( m => m.AdminbusinesseditPageModule)
+  },
+  {
+    path: 'adminuploadpayoutgrid',
+    loadChildren: () => import('./adminuploadpayoutgrid/adminuploadpayoutgrid.module').then( m => m.AdminuploadpayoutgridPageModule)
+  },
+  {
+    path: 'viewimage',
+    loadChildren: () => import('./viewimage/viewimage.module').then( m => m.ViewimagePageModule)
+  },
+  {
+    path: 'adminuploadlampoffer',
+    loadChildren: () => import('./adminuploadlampoffer/adminuploadlampoffer.module').then( m => m.AdminuploadlampofferPageModule)
+  },
+  {
+    path: 'adminmanagemember',
+    loadChildren: () => import('./adminmanagemember/adminmanagemember.module').then( m => m.AdminmanagememberPageModule)
+  },
+  {
+    path: 'memberedit',
+    loadChildren: () => import('./memberedit/memberedit.module').then( m => m.MembereditPageModule)
+  },
+  {
+    path: 'payoutallbusiness',
+    loadChildren: () => import('./payoutallbusiness/payoutallbusiness.module').then( m => m.PayoutallbusinessPageModule)
+  },
 ];
 
 @NgModule({

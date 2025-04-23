@@ -1,5 +1,5 @@
 <ion-header>
-<ion-toolbar>
+<ion-toolbar class="header-color">
   <ion-icon slot="end" name="close-outline" (click)="dismissModal()"></ion-icon>
 </ion-toolbar>
 </ion-header>
@@ -8,14 +8,14 @@
 <ion-grid>
   <ion-row>
     <ion-col style="text-align: center;">
-      <ion-card>
+      <ion-card (click)="call()">
         <ion-icon name="call-outline"></ion-icon>
         <br>
         <ion-label>Call Us</ion-label>
       </ion-card>
     </ion-col>
     <ion-col style="text-align: center;" >
-      <ion-card>
+      <ion-card (click)="sendEmail()">
         <ion-icon name="mail-outline"></ion-icon>
         <br>
         <ion-label>Email Us</ion-label>

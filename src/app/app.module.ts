@@ -15,6 +15,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {fireConfig} from "./firebaseConfig";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Camera } from '@ionic-native/camera/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { ContactsPageModule } from './contacts/contacts.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
@@ -26,7 +31,11 @@ import { Camera } from '@ionic-native/camera/ngx';
     AngularFireDatabaseModule],
   providers: [
     Camera,
+    EmailComposer,
+    CallNumber,
+    AppVersion,
     SplashScreen,
+    ContactsPageModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

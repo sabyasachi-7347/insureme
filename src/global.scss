@@ -29,8 +29,23 @@
 //     margin-top: 10%;
 //   }
 ion-content{
---background:#d5d2ff;
+--background:#f5f4f9;
+ion-item{
+    text-align: justify;
+}
+ion-input{
+    border-bottom: solid 2px #a37bed;
+}
 ion-item{
     --background: none;
+    // --color:#bfebe7;
 }
+ion-button{
+    --background:#ff3e3f;
+}
+}
+
+.header-color{
+    --background: #ff3e3f;
+    --color: #ffffff;
 }

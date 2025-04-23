@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -9,11 +9,8 @@
 
 <ion-content>
   <ion-card>
-    <ion-item>
-      <ion-label>JAN-2022</ion-label><ion-button>View</ion-button>
+    <ion-item *ngFor="let offer of offers;">
+      <ion-label>{{offer.date}}</ion-label><ion-button (click)="openPayout(offer)">View</ion-button>
     </ion-item>
-    <ion-item>
-      <ion-label>FEB-2022</ion-label><ion-button>View</ion-button>
-    </ion-item>
-  </ion-card>  
+  </ion-card>
 </ion-content>

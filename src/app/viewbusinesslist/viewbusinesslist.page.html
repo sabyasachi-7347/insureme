@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View All Business</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card *ngFor="let user of allbusiness;let i = index;">
+    <ion-row >
+      <ion-col style="text-align: center;">
+        {{user.name}}
+      </ion-col>
+      
+    </ion-row>  
+    <ion-row >
+      <ion-col size="6" style="text-align: center;">
+        LAN: {{user.lanNo}}
+      </ion-col>
+      <ion-col size="6" style="text-align: center;">
+        Created By: {{user.createdBy}}
+      </ion-col>
+    </ion-row>  
+    <ion-row >
+      <ion-col size="6" style="text-align: center;">
+        Amount: {{user.disbursedAmount}}
+      </ion-col>
+      <ion-col size="6" style="text-align: center;">
+        Type: {{user.typeOfBorrow}}
+      </ion-col>
+    </ion-row>  
+    <ion-row >
+      <ion-col style="text-align: center;">
+        Remark: {{user.remarks}}
+      </ion-col>
+    </ion-row>  
+    </ion-card>
+  </ion-grid>
+</ion-content>

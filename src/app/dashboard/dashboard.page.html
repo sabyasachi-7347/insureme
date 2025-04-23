@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -10,38 +10,70 @@
 <ion-content>
   <ion-grid style="margin: 15%;">
     <ion-row style="text-align: center;">
-      <ion-col>
+      <!-- <ion-col>
           <ion-label>Total Points Redeem</ion-label>
-          <ion-input></ion-input>  
-      </ion-col>
+          <ion-input [(ngModel)]="dashboard.totalredeem" readonly></ion-input>  
+      </ion-col> -->
       <ion-col>
-          <ion-label>Total Points Pending</ion-label>
-          <ion-input></ion-input>  
+        <ion-label>Total Paid Amount (in ₹)</ion-label>
+        <ion-input [(ngModel)]="dashboard.totalpaid" readonly></ion-input>  
+    </ion-col>
+      <ion-col>
+          <ion-label>Total Pending Amount (in ₹)</ion-label>
+          <ion-input [(ngModel)]="dashboard.totalpending" readonly></ion-input>  
       </ion-col>
       </ion-row>
       <ion-row style="text-align: center;">
-      <ion-col>
-          <ion-label>Total Paid Points</ion-label>
-          <ion-input></ion-input>  
-      </ion-col>
+      
       <ion-col>
         <ion-label>Total Number of Cases</ion-label>
-        <ion-input></ion-input>  
+        <ion-input (click)="goto('totalcases')" [(ngModel)]="dashboard.totalcases" readonly></ion-input>  
     </ion-col>
-    </ion-row>
-    <ion-row style="text-align: center;">
-      <ion-col>
-        <ion-label>Total Invalid Cases</ion-label>
-        <ion-input></ion-input>  
-    </ion-col>
+    <ion-col>
+      <ion-label>Total Invalid Cases</ion-label>
+      <ion-input (click)="goto('invalidcases')" [(ngModel)]="dashboard.invalidcases" readonly></ion-input>  
+  </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-item>
-    <ion-searchbar placeholder="Enter LAN Number"></ion-searchbar>
+  <ion-item *ngIf="userRole == 'agent' && top5 == true">
+    <ion-searchbar placeholder="Enter LAN Number" [(ngModel)]="searchInput" (keyup)="searchBusiness($event)"></ion-searchbar>
   </ion-item>
+  <div></div>
+  <div *ngIf="userRole == 'agent' && top5 == true">
+    <ion-card *ngFor="let business of top5Records;">
+      <ion-row>
+        <ion-col size="8">{{business.name}}</ion-col>
+        <ion-col size="4">₹ {{business.disbursedAmount}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Issued Date</ion-col>
+        <ion-col>{{business.disburseDate}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>LAN No</ion-col>
+        <ion-col>{{business.lanNo}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Bank Name</ion-col>
+        <ion-col>{{business.bankName}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Agent Pay</ion-col>
+        <ion-col>{{business.amountToPayAgent}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Sub Agent Pay</ion-col>
+        <ion-col>{{business.amountToPaySubAgent}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Qc Status</ion-col>
+        <ion-col>{{business.approvedbyadmin == 'A'?'Approved':business.approvedbyadmin == 'R'?'Rejected':business.approvedbyadmin == 'H'?'Hold':business.approvedbyadmin == 'P'?"Pending":business.approvedbyadmin == 'Paid'?"Paid":"NA"}}</ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 
-  <h2>Member Dashboard</h2>
+  <!-- <h2>Member Dashboard</h2>
   <ion-item>
     <ion-label position="floating">Select Member</ion-label>
     <ion-select placeholder="Select member" interface="action-sheet">
@@ -75,8 +107,8 @@
     <div class="btnStyle">
       <ion-button class="btnStyleIn">Search</ion-button>
     </div>
-  </ion-grid>
+  </ion-grid> -->
   <div class="btnStyle">
-    <ion-button>Export to Exel</ion-button>
+    <ion-button (click)="exportReport()" shape="round">Export to Exel</ion-button>
   </div>
 </ion-content>

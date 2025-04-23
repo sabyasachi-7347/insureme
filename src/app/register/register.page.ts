@@ -24,6 +24,8 @@ export class RegisterPage implements OnInit {
   passwordShow: any = false;
   passwordShowType: string = "password";
   colldata: any;
+  allUsers: any;
+  isExist: boolean = false;
   constructor(public router:Router,public modalCtrl:ModalController, public actionSheetController:ActionSheetController, public pluginServices:PluginutillService,public auth:AngularFireAuth,
     public firestore:AngularFirestore,
     public formBuilder: FormBuilder) { }
@@ -155,6 +157,8 @@ await actionSheet.present();
   }
 
   async signup(){
+    console.log("singup");
+    this.isExist = false;
     if(this.registerForm.value.password.trim() == '' || this.registerForm.value.cpassword.trim() == '' || this.registerForm.value.password.trim() != this.registerForm.value.cpassword.trim()){
       alert("Password and Confirm Password field should not be empty and should be same");
       return;
@@ -163,43 +167,125 @@ await actionSheet.present();
       alert("Please attach aadhaar card picture");
       return;
     }else{
-      this.auth.createUserWithEmailAndPassword(this.registerForm.value.email.trim(),this.registerForm.value.password).then(async (data)=>{
-        console.log(data);
-        if(data.user.uid)
-        {
-          await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
-"name":this.registerForm.value.name.trim(),
-"email":this.registerForm.value.email.trim(),
-"mobile":this.registerForm.value.mobile.toString().trim(),
-"aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
-"aadhaarFront":this.aadharFrontImg,
-"aadhaarBack":this.aadharBackImg,
-"enrolledby":'admin',
-"role":'agent'
-         }).catch((error) => {
-          console.log(error);
-          alert("Unable to process request");
-          return;
-         }).then((userResult) => {
-          console.log(userResult);
-          alert("User registered sucessfully");
-          this.registerForm.reset();
-          this.aadharFrontImg = '';
-          this.aadharBackImg = '';
-          //  this.goto('login');
-          return;
-         })
-        }}).catch((err) => {
-          console.log(err);
-          console.log(JSON.parse(JSON.stringify(err)));
+      // this.auth.createUserWithEmailAndPassword(this.registerForm.value.email.trim(),this.registerForm.value.password).then(async (data)=>{
+      //   console.log(data);
+      //   if(data.user.uid)
+      //   {
+        console.log("singup check1");
+        try{
+          await this.firestore.collection('users').get().subscribe(async(result:any)=>{
+            // console.log(result.data());
+            if(result.docs.length){
+              result.docs.forEach((snap:any)=>{
+                console.log(snap.data());
+                if(snap.data()['email'] == this.registerForm.value.email.trim() || snap.data()['mobile'] == this.registerForm.value.mobile.toString().trim()){
+                  alert('User is already exist');
+               this.isExist = true;
+                  return;
+                }
+                 
+              }
+              )
+              if(!this.isExist){
+                await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
+                  "name":this.registerForm.value.name.trim(),
+                  "email":this.registerForm.value.email.trim(),
+                  "mobile":this.registerForm.value.mobile.toString().trim(),
+                  "aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
+                  "aadhaarFront":this.aadharFrontImg,
+                  "aadhaarBack":this.aadharBackImg,
+                  "enrolledby":this.registerForm.value.email.trim(),
+                  "enrolledbyName":this.registerForm.value.name.trim(),
+                  "approvedbyadmin":'false',
+                  "role":'agent'
+                           }).catch((error) => {
+                            console.log(error);
+                            alert("Unable to process request");
+                            return;
+                           }).then((userResult) => {
+                            console.log(userResult);
+                            alert("User registered sucessfully");
+                            this.registerForm.reset();
+                            this.aadharFrontImg = '';
+                            this.aadharBackImg = '';
+                            //  this.goto('login');
+                            return;
+                           })  
+              }
+             
+            }else{
+              await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
+                "name":this.registerForm.value.name.trim(),
+                "email":this.registerForm.value.email.trim(),
+                "mobile":this.registerForm.value.mobile.toString().trim(),
+                "aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
+                "aadhaarFront":this.aadharFrontImg,
+                "aadhaarBack":this.aadharBackImg,
+                "enrolledby":this.registerForm.value.email.trim(),
+                "enrolledbyName":this.registerForm.value.name.trim(),
+                "approvedbyadmin":'false',
+                "role":'agent'
+                         }).catch((error) => {
+                          console.log(error);
+                          alert("Unable to process request");
+                          return;
+                         }).then((userResult) => {
+                          console.log(userResult);
+                          alert("User registered sucessfully");
+                          this.registerForm.reset();
+                          this.aadharFrontImg = '';
+                          this.aadharBackImg = '';
+                          //  this.goto('login');
+                          return;
+                         })
+            }
+            })
+        }
+        catch(err){
+                      await this.firestore.collection("users").doc(this.registerForm.value.email.trim()).set({
+            "name":this.registerForm.value.name.trim(),
+            "email":this.registerForm.value.email.trim(),
+            "mobile":this.registerForm.value.mobile.toString().trim(),
+            "aadhaar":this.registerForm.value.aadhaarno.toString().trim(),
+            "aadhaarFront":this.aadharFrontImg,
+            "aadhaarBack":this.aadharBackImg,
+            "enrolledby":this.registerForm.value.email.trim(),
+            "enrolledbyName":this.registerForm.value.name.trim(),
+            "approvedbyadmin":'false',
+            "role":'agent'
+                     }).catch((error) => {
+                      console.log(error);
+                      alert("Unable to process request");
+                      return;
+                     }).then((userResult) => {
+                      console.log(userResult);
+                      alert("User registered sucessfully");
+                      this.registerForm.reset();
+                      this.aadharFrontImg = '';
+                      this.aadharBackImg = '';
+                      //  this.goto('login');
+                      return;
+                     })
+        }
+
+
+
+
+
+
+        }
+      // }
+        // ).catch((err) => {
+        //   console.log(err);
+        //   console.log(JSON.parse(JSON.stringify(err)));
           
-          var errMsg:any = JSON.parse(JSON.stringify(err))
-          errMsg = errMsg.code;
-          if(errMsg == 'auth/email-already-in-use'){
-            alert("The email address is already in use by another account.")
-          }
-        })
-    }
+        //   var errMsg:any = JSON.parse(JSON.stringify(err))
+        //   errMsg = errMsg.code;
+        //   if(errMsg == 'auth/email-already-in-use'){
+        //     alert("The email address is already in use by another account.")
+        //   }
+        // })
+    // }
   }
 
   showPassword(){

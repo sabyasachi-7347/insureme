@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar class="header-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Upload Lamp Offer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-select placeholder="Select member" [(ngModel)]="selectedDate">
+          <ion-select-option *ngFor="let date of years" value="{{date}}">{{date}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col >
+        <img [src]="uploadpaygrid == '' ? '../../assets/imgs/logo.png' : uploadpaygrid" (click)="imageOptionPopup('grid')">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+       <ion-button (click)="uploadDetails()" expanded="full">Upload</ion-button>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>

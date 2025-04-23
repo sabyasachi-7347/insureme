@@ -33,7 +33,7 @@ phoneReg:any = '/^[0-9]+${10}/';
     
   }
   async addMember(){
-    if(!(/^[0-9]+$/.test(this.mobile)) || !(this.mobile.length == 10)){
+    if(!(/^[0-9]+$/.test(this.mobile)) || !((this.mobile).toString().length == 10)){
       alert("Please enter a valid mobile number");
       return;
     }else if(!(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.email))){
@@ -56,8 +56,9 @@ phoneReg:any = '/^[0-9]+${10}/';
           await this.firestore.collection("users").doc(this.email.trim()).set({
 "name":this.name.trim(),
 "email":this.email.trim(),
-"mobile":this.mobile.trim(),
+"mobile":this.mobile,
 "enrolledby":this.curentUser.email,
+"enrolledbyName":this.curentUser.name,
 "role":'subagent'
          }).catch((error) => {
           console.log(error);
