@@ -1,4 +1,4 @@
-name: Build Ionic APK and IPA on Merge
+name: Build APK and IPA (Cordova) on PR Merge
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  build_android:
+  android:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -20,37 +20,27 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Ionic and Capacitor
+      - name: Install Ionic & Cordova CLI
         run: |
-          npm install -g @ionic/cli
-          npm install -g @capacitor/cli
+          npm install -g @ionic/cli cordova
 
-      - name: Build Web Assets
-        run: ionic build
-
-      - name: Sync Capacitor
-        run: npx cap sync android
-
-      - name: Build APK using Gradle
+      - name: Build Android APK (Unsigned)
         run: |
-          cd android
-          ./gradlew assembleRelease
+          ionic cordova build android --release
 
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          name: app-release-unsigned.apk
+          path: platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
 
-  # Optional: iOS build on macOS
-  build_ios:
+  ios:
     runs-on: macos-latest
-    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -58,25 +48,20 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Ionic and Capacitor
+      - name: Install Ionic & Cordova CLI
         run: |
-          npm install -g @ionic/cli
-          npm install -g @capacitor/cli
+          npm install -g @ionic/cli cordova
 
-      - name: Build Web Assets
-        run: ionic build
-
-      - name: Sync Capacitor
-        run: npx cap sync ios
-
-      - name: Build IPA with Xcode
+      - name: Build iOS App
         run: |
-          cd ios/App
-          xcodebuild -scheme App -configuration Release -archivePath build/App.xcarchive archive
-          xcodebuild -exportArchive -archivePath build/App.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath build
+          ionic cordova build ios --release
 
-      - name: Upload IPA Artifact
+      # Exporting IPA requires a bit more setup with signing, e.g.:
+      # - Setup code signing via fastlane or xcodebuild
+      # - Export using xcodebuild or fastlane
+
+      - name: Upload IPA (manual export needed)
         uses: actions/upload-artifact@v4
         with:
-          name: app-release.ipa
-          path: ios/App/build/*.ipa
+          name: ios-build-folder
+          path: platforms/ios/build/device/
